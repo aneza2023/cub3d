@@ -1,52 +1,32 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: anezkahavrankova <anezkahavrankova@stud    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/10/16 22:30:01 by anezkahavra       #+#    #+#              #
+#    Updated: 2025/10/17 10:50:47 by anezkahavra      ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-NAME = libft.a
-SOURCES =   ft_atoi.c\
-            ft_bzero.c\
-            ft_calloc.c\
-            ft_isalnum.c\
-            ft_isalpha.c\
-            ft_isascii.c\
-            ft_isdigit.c\
-            ft_isprint.c\
-            ft_itoa.c\
-            ft_memcmp.c\
-            ft_memcpy.c\
-            ft_memchr.c\
-            ft_memmove.c\
-            ft_memset.c\
-            ft_putendl_fd.c\
-            ft_putchar_fd.c\
-            ft_putnbr_fd.c\
-            ft_putstr_fd.c\
-            ft_split.c\
-            ft_strdup.c\
-            ft_strchr.c\
-            ft_striteri.c\
-            ft_strjoin.c\
-            ft_strlcpy.c\
-            ft_strlen.c\
-            ft_strmapi.c\
-            ft_strncmp.c\
-            ft_strnstr.c\
-            ft_strrchr.c\
-            ft_strtrim.c\
-            ft_substr.c\
-            ft_tolower.c\
-            ft_toupper.c\
-            ft_strlcat.c\
-            getnextline/get_next_line_utils.c\
-            getnextline/get_next_line.c
+NAME = cub3d
+SOURCES = main.c\
+			parsing.c
+
+LIBFTLIB = libft/libft.a
+# MLX42LIB = MLX42/build/libmlx42.a
 
 OBJS = $(SOURCES:.c=.o)
 CC = cc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS =  -Wall -Werror -Wextra -g 
 
 all:$(NAME)
 
 $(NAME):$(OBJS)
-	ar rc $(NAME) $(OBJS)
+	cc $(CFLAGS) -o $(NAME) $(OBJS) $(MLX42LIB) $(LIBFTLIB) $(MLXFLAGS)
 
-clean: 
+clean:
 	rm -rf $(OBJS)
 
 fclean: clean
