@@ -1,0 +1,3 @@
+// check if all textures present - otherwise error
+// if texture files work, check maybe later when opening them
+// MLX uses fourth value for transperency, might be issue later, when colour dont look exactly as they should

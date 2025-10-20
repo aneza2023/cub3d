@@ -3,16 +3,24 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: anezkahavrankova <anezkahavrankova@stud    +#+  +:+       +#+         #
+#    By: anezka <anezka@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/16 22:30:01 by anezkahavra       #+#    #+#              #
-#    Updated: 2025/10/17 10:50:47 by anezkahavra      ###   ########.fr        #
+#    Updated: 2025/10/20 16:35:05 by anezka           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3d
 SOURCES = main.c\
-			parsing.c
+			parsing.c\
+			parse_map.c\
+			parse_map_utils.c\
+			parse_map_borders.c\
+			parse_map_borders_utils.c\
+			parsing/parse_colours.c\
+			parsing/parse_colours_utils.c\
+			parsing/parse_textures.c\
+			free_stuff.c\
 
 LIBFTLIB = libft/libft.a
 # MLX42LIB = MLX42/build/libmlx42.a

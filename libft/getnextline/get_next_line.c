@@ -19,7 +19,7 @@ int	help(char **buff, int bytestread, char **remainder, char **text)
 	*text = ft_strjoin_gnl(*text, *buff);
 	if (ft_strchrmod(*text, '\n') != NULL)
 	{
-		*remainder = ft_strdup(ft_strchrmod(*text, '\n'));
+		*remainder = ft_strdup_gnl(ft_strchrmod(*text, '\n'));
 		if ((*remainder)[0] == '\0'){
 			free(*remainder);
 			*remainder = NULL;
@@ -71,7 +71,7 @@ char	*get_next_line(int fd)
 		free(buff);
 	if ( bytestread < 0 || (bytestread == 0 && remainder == NULL))
 		return (NULL);
-	text = ft_strdup("");
+	text = ft_strdup_gnl("");
 	if (remainder != NULL)
 	{
 		free(text);

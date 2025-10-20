@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anezkahavrankova <anezkahavrankova@stud    +#+  +:+       +#+        */
+/*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 22:09:42 by anezkahavra       #+#    #+#             */
-/*   Updated: 2025/10/17 10:58:32 by anezkahavra      ###   ########.fr       */
+/*   Updated: 2025/10/17 15:44:22 by anezka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	main(int argc, char *argv[])
 		return (1);
 	}
 	else
-		map = parse_crossroad(argv[1], map);
+		parse_crossroad(argv[1], &map);
+	free_map(&map);
 	return (0);
 }

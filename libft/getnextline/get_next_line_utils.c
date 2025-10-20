@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anezkahavrankova <anezkahavrankova@stud    +#+  +:+       +#+        */
+/*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 11:33:13 by codespace         #+#    #+#             */
-/*   Updated: 2025/10/16 22:43:01 by anezkahavra      ###   ########.fr       */
+/*   Updated: 2025/10/17 12:01:03 by anezka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ char	*ft_strjoin_gnl(char *s1, char *s2)
 	int		k;
 
 	if (!s2)
-		s2 = ft_strdup("");
-	temp = (char *)malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
+		s2 = ft_strdup_gnl("");
+	temp = (char *)malloc((ft_strlen_gnl(s1) + ft_strlen_gnl(s2) + 1) * sizeof(char));
 	if (temp == NULL)
 		return (NULL);
 	i = 0;
@@ -41,7 +41,7 @@ char	*ft_strjoin_gnl(char *s1, char *s2)
 	return (free(s2), temp);
 }
 
-size_t	ft_strlen(const char *str)
+size_t	ft_strlen_gnl(const char *str)
 {
 	int	i;
 
@@ -74,16 +74,16 @@ char	*ft_strchrmod(const char *s, int c)
 	return (start);
 }
 
-char	*ft_strdup(const char *s1)
+char	*ft_strdup_gnl(const char *s1)
 {
 	char				*temp;
 	unsigned int		i;
 
-	temp = malloc((ft_strlen(s1) + 1) * sizeof(char));
+	temp = malloc((ft_strlen_gnl(s1) + 1) * sizeof(char));
 	if (temp == NULL)
 		return (NULL);
 	i = 0;
-	while (i < ft_strlen(s1))
+	while (i < ft_strlen_gnl(s1))
 	{
 		temp[i] = s1[i];
 		i++;
