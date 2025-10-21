@@ -6,11 +6,11 @@
 /*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 16:30:11 by anezka            #+#    #+#             */
-/*   Updated: 2025/10/20 16:19:14 by anezka           ###   ########.fr       */
+/*   Updated: 2025/10/21 22:43:08 by anezka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
 int	compare_end_borders(int end, t_map **map, int spot)
 {
@@ -67,6 +67,7 @@ int	check_all_borders(t_map **map)
 	int	border_line;
 
 	i = 0;
+	set_head(map);
 	while ((*map)->map && (*map)->map[i] != NULL)
 	{
 		if (i == 0 || (*map)->map[i + 1] == NULL)
@@ -138,6 +139,7 @@ int	prepare_parse_map(char *line, t_map **map)
 		return (0);
 	}
 	parse_map(line, map);
+	(*map)->map_info->lenght++;
 	before_map = 1;
 	return (0);
 }

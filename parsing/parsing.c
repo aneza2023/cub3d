@@ -6,11 +6,22 @@
 /*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 10:49:57 by anezkahavra       #+#    #+#             */
-/*   Updated: 2025/10/20 11:22:53 by anezka           ###   ########.fr       */
+/*   Updated: 2025/10/21 22:43:16 by anezka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
+
+void	set_head(t_map **map)
+{
+	(*map)->head_map = malloc(sizeof(char *) * ((*map)->map_info->lenght + 1));
+	if ((*map)->head_map == NULL)
+	{
+		perror("");
+		free_map(map);
+		exit (1);
+	}
+}
 
 void	set_start_colours(t_map **map)
 {
@@ -20,6 +31,15 @@ void	set_start_colours(t_map **map)
 	(*map)->C_colour->blue = -1;
 	(*map)->C_colour->red = -1;
 	(*map)->C_colour->green = -1;
+	(*map)->map_info = malloc(sizeof(t_map_info));
+	if ((*map)->map_info == NULL)
+	{
+		perror("");
+		free_map(map);
+		exit (1);
+	}
+	(*map)->map_info->lenght = 0;
+	(*map)->map_info->space_count = 0;
 }
 
 void	prepare_map(t_map **map)
@@ -44,6 +64,7 @@ void	prepare_map(t_map **map)
 	}
 	set_start_colours(map);
 	(*map)->map = NULL;
+	(*map)->head_map = NULL;
 }
 
 int	check_all(t_map **map, char *line)
@@ -89,7 +110,7 @@ int	parse_crossroad(char *argv, t_map **map)
 			parsing_elements_textures(line, map);
 		else
 			prepare_parse_map(line, map);
-		// free(line); // issue when comes to end of file but need to work with it more, after proper strdup and othert should be ok
+		free(line); // issue when comes to end of file but need to work with it more, after proper strdup and othert should be ok
 		line = get_next_line(fd);
 		if (!line)
 			break ;

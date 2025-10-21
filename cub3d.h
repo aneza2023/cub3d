@@ -6,7 +6,7 @@
 /*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 22:09:57 by anezkahavra       #+#    #+#             */
-/*   Updated: 2025/10/20 16:47:10 by anezka           ###   ########.fr       */
+/*   Updated: 2025/10/21 16:47:00 by anezka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,12 @@ typedef struct colours_for_map{
 	int	green;
 } t_colour;
 
+typedef struct map_informations {
+	int	lenght;
+	int	space_count;
+} t_map_info;
+
+
 typedef struct map{
 	char		*NO_texture;
 	char		*SO_texture;
@@ -34,6 +40,8 @@ typedef struct map{
 	t_colour	*F_colour;
 	t_colour	*C_colour;
 	char		**map;
+	char		**head_map;
+	t_map_info	*map_info;
 } t_map;
 
 void	free_map(t_map **map);
@@ -62,7 +70,7 @@ void	map_invalid(t_map **map);
 int		space_inside_present(char *line);
 int		borders_around_space(t_map **map, int i);
 int		borders_next(char *line);
-int		*space_positions(char *line);
-
+int		*space_positions(t_map **map, int i);
+void	set_head(t_map **map);
 
 #endif

@@ -6,11 +6,11 @@
 /*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 16:18:57 by anezka            #+#    #+#             */
-/*   Updated: 2025/10/20 17:31:51 by anezka           ###   ########.fr       */
+/*   Updated: 2025/10/21 22:43:00 by anezka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
 int	part_of_map(char *line)
 {
@@ -70,6 +70,7 @@ int	space_inside_present(char *line)
 	int	present;
 
 	i = 0;
+	present = 0;
 	while(line[i] != '\0')
 	{
 		if (line[i] == ' ')

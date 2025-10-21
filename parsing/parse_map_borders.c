@@ -6,11 +6,11 @@
 /*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 12:01:01 by anezka            #+#    #+#             */
-/*   Updated: 2025/10/20 17:16:28 by anezka           ###   ########.fr       */
+/*   Updated: 2025/10/21 22:42:53 by anezka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
 int	still_border(char *line, int side)
 {
@@ -41,9 +41,19 @@ int	still_border(char *line, int side)
 
 int	borders_around_space(t_map **map, int i)
 {
+	int *space_pos;
+	int	count;
+
 	if (borders_next((*map)->map[i]) == 1)
 		map_invalid(map);
-	space_positions((*map)->map[i]);
+	space_pos = space_positions(map, i);
+	count = (*map)->map_info->space_count;
+	while (count > 0)
+	{
+		if ((*map)->map[i - 1][*space_pos] != '1' || (*map)->map[i + 1][*space_pos] != '1')
+			map_invalid(map);
+		count--;
+	}
 	return (0);
 }
 
