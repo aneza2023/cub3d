@@ -6,7 +6,7 @@
 /*   By: olcherno <olcherno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 22:09:42 by anezkahavra       #+#    #+#             */
-/*   Updated: 2025/11/26 18:04:01 by olcherno         ###   ########.fr       */
+/*   Updated: 2025/11/26 18:07:09 by olcherno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	main(int argc, char *argv[])
 {
-	t_map *map;
+	t_map *map1;
 
 	map = NULL;
 	if (argc != 2)
