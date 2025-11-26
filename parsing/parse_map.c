@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ahavrank <ahavrank@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 16:30:11 by anezka            #+#    #+#             */
-/*   Updated: 2025/10/21 22:43:08 by anezka           ###   ########.fr       */
+/*   Updated: 2025/11/26 20:33:18 by ahavrank         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,7 @@ int	prepare_parse_map(char *line, t_map **map)
 		return (0);
 	}
 	parse_map(line, map);
-	(*map)->map_info->lenght++;
+	(*map)->map_info->line_count++;
 	before_map = 1;
 	return (0);
 }
