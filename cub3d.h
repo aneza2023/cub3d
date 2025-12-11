@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ahavrank <ahavrank@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 22:09:57 by anezkahavra       #+#    #+#             */
-/*   Updated: 2025/10/21 16:47:00 by anezka           ###   ########.fr       */
+/*   Updated: 2025/11/26 21:39:18 by ahavrank         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,20 @@ typedef struct colours_for_map{
 } t_colour;
 
 typedef struct map_informations {
-	int	lenght;
+	int	line_count;
 	int	space_count;
+	int	map_width;
+	int	map_hight;
 } t_map_info;
+
+typedef struct game_player{
+	double	pos_x;
+	double	pos_y;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
+} t_player;
 
 
 typedef struct map{
@@ -42,7 +53,10 @@ typedef struct map{
 	char		**map;
 	char		**head_map;
 	t_map_info	*map_info;
+	t_player	*player;
 } t_map;
+
+
 
 void	free_map(t_map **map);
 char	*texture_value(char *line);
@@ -72,5 +86,8 @@ int		borders_around_space(t_map **map, int i);
 int		borders_next(char *line);
 int		*space_positions(t_map **map, int i);
 void	set_head(t_map **map);
+void	set_start_colours(t_map **map);
+void	set_player(t_map **map);
+void	set_map_struct(t_map **map);
 
 #endif

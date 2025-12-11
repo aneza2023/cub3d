@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: anezka <anezka@student.42.fr>              +#+  +:+       +#+         #
+#    By: ahavrank <ahavrank@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/16 22:30:01 by anezkahavra       #+#    #+#              #
-#    Updated: 2025/10/21 22:42:32 by anezka           ###   ########.fr        #
+#    Updated: 2025/11/26 21:41:48 by ahavrank         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SOURCES = main.c\
 			parsing/parse_colours.c\
 			parsing/parse_colours_utils.c\
 			parsing/parse_textures.c\
+			parsing/set_struct.c\
 			free_stuff.c\
 
 LIBFTLIB = libft/libft.a
