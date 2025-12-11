@@ -6,7 +6,7 @@
 /*   By: ahavrank <ahavrank@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 22:09:42 by anezkahavra       #+#    #+#             */
-/*   Updated: 2025/11/26 21:41:24 by ahavrank         ###   ########.fr       */
+/*   Updated: 2025/12/11 19:25:54 by ahavrank         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(int argc, char *argv[])
 	}
 	else
 		parse_crossroad(argv[1], &map);
-	// raycasting_crossroad(&map);
+	raycasting_crossroad(&map);
 	free_map(&map);
 	//comment
 	return (0);

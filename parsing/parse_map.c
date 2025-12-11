@@ -6,7 +6,7 @@
 /*   By: ahavrank <ahavrank@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 16:30:11 by anezka            #+#    #+#             */
-/*   Updated: 2025/12/11 18:03:51 by ahavrank         ###   ########.fr       */
+/*   Updated: 2025/12/11 18:42:51 by ahavrank         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,18 +74,12 @@ int	check_all_borders(t_map **map)
 			border_line = check_first_border((*map)->map[i]);
 		start_border = find_border((*map)->map[i], 0);
 		end_border = find_border((*map)->map[i], 1);
-		if (start_border == -1 || end_border == -1 || border_line == 1){
-			printf("5");
+		if (start_border == -1 || end_border == -1 || border_line == 1)
 			map_invalid(map);
-		}
-		if (compare_start_borders(start_border, map, i) == 1){
-			printf("6");
+		if (compare_start_borders(start_border, map, i) == 1)
 			map_invalid(map);
-		}
-		if (compare_end_borders(end_border, map, i) == 1){
-			printf("7");
+		if (compare_end_borders(end_border, map, i) == 1)
 			map_invalid(map);
-		}
 		if (space_inside_present((*map)->map[i]) == 0)
 			borders_around_space(map, i);
 		i++;

@@ -6,6 +6,5 @@
 //ft_strtrim uses malloc >> needs to be freed
 
 //parsing map
-// if too many new lines after map, issue
-// check if all textures present - otherwise error
+// not sure if there can be empty lines after map >> check later
 // if texture files work, check maybe later when opening them

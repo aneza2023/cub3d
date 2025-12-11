@@ -6,13 +6,14 @@
 /*   By: ahavrank <ahavrank@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 20:27:14 by ahavrank          #+#    #+#             */
-/*   Updated: 2025/11/26 21:41:18 by ahavrank         ###   ########.fr       */
+/*   Updated: 2025/12/11 19:58:04 by ahavrank         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-// int	raycasting_crossroad(t_map **map)
-// {
-	
-// }
+int	raycasting_crossroad(t_map **map)
+{
+	setting_player(map);
+    return (0);
+}
