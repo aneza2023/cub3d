@@ -6,7 +6,7 @@
 /*   By: ahavrank <ahavrank@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 22:09:57 by anezkahavra       #+#    #+#             */
-/*   Updated: 2025/11/26 21:39:18 by ahavrank         ###   ########.fr       */
+/*   Updated: 2025/12/11 20:23:00 by ahavrank         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct map_informations {
 } t_map_info;
 
 typedef struct game_player{
+	char	direction;
 	double	pos_x;
 	double	pos_y;
 	double	dir_x;
@@ -89,5 +90,11 @@ void	set_head(t_map **map);
 void	set_start_colours(t_map **map);
 void	set_player(t_map **map);
 void	set_map_struct(t_map **map);
+int		raycasting_crossroad(t_map **map);
+int		setting_player(t_map **map);
+int		setting_direction(t_map **map);
+int		setting_direction_cnt(t_map **map);
+int		setting_position(t_map **map);
+int		setting_plane(t_map **map);
 
 #endif

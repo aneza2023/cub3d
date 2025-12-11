@@ -6,7 +6,7 @@
 #    By: ahavrank <ahavrank@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/16 22:30:01 by anezkahavra       #+#    #+#              #
-#    Updated: 2025/11/26 21:41:48 by ahavrank         ###   ########.fr        #
+#    Updated: 2025/12/11 20:23:03 by ahavrank         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,8 @@ SOURCES = main.c\
 			parsing/parse_textures.c\
 			parsing/set_struct.c\
 			free_stuff.c\
+			raycasting.c\
+			setting_player.c\
 
 LIBFTLIB = libft/libft.a
 # MLX42LIB = MLX42/build/libmlx42.a
