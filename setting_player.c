@@ -6,7 +6,7 @@
 /*   By: ahavrank <ahavrank@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 19:43:55 by ahavrank          #+#    #+#             */
-/*   Updated: 2025/12/11 20:22:57 by ahavrank         ###   ########.fr       */
+/*   Updated: 2025/12/11 21:54:53 by ahavrank         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int setting_position(t_map **map)
 
 int setting_player(t_map **map)
 {
-    // setting_plane(map);
+    // setting_plane(map); maybe just set to >> 0.66 (90stupnu)
     setting_position(map);
     setting_direction(map);
     return (0);

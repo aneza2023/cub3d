@@ -6,7 +6,7 @@
 /*   By: ahavrank <ahavrank@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 22:09:57 by anezkahavra       #+#    #+#             */
-/*   Updated: 2025/12/11 20:23:00 by ahavrank         ###   ########.fr       */
+/*   Updated: 2025/12/11 22:02:14 by ahavrank         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <fcntl.h>
 #include <stdlib.h>
 #include "libft/libft.h"
+#include "MLX42/include/MLX42/MLX42.h"
 
 typedef struct colours_for_map{
 	int	red;
