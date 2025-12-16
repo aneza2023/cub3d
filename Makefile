@@ -22,8 +22,8 @@ SOURCES = main.c\
 			parsing/parse_textures.c\
 			parsing/set_struct.c\
 			free_stuff.c\
-			raycasting.c\
-			setting_player.c\
+			game_setup/game_crossroad.c\
+			game_setup/setting_player.c\
 
 LIBFTLIB = libft/libft.a
 MLX42LIB = MLX42/build/libmlx42.a

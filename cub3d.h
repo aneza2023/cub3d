@@ -21,6 +21,9 @@
 #include "libft/libft.h"
 #include "MLX42/include/MLX42/MLX42.h"
 
+# define HEIGHT 800 
+# define WIDTH 800
+
 typedef struct colours_for_map{
 	int	red;
 	int	blue;
@@ -44,6 +47,19 @@ typedef struct game_player{
 	double	plane_y;
 } t_player;
 
+typedef struct	game_information{
+	double	camera_x;
+	double	ray_dir_x;
+	double	ray_dir_y;
+	double	map_x;
+	double	map_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	
+}	t_game_info;
+
 
 typedef struct map{
 	char		*NO_texture;
@@ -56,6 +72,9 @@ typedef struct map{
 	char		**head_map;
 	t_map_info	*map_info;
 	t_player	*player;
+	double		old_time;
+	double		time;
+	t_game_info	game;
 } t_map;
 
 
@@ -91,7 +110,7 @@ void	set_head(t_map **map);
 void	set_start_colours(t_map **map);
 void	set_player(t_map **map);
 void	set_map_struct(t_map **map);
-int		raycasting_crossroad(t_map **map);
+int		game_crossroad(t_map **map);
 int		setting_player(t_map **map);
 int		setting_direction(t_map **map);
 int		setting_direction_cnt(t_map **map);

@@ -39,10 +39,24 @@ int setting_window(t_map **map)
     return (0);
 }
 
-int	raycasting_crossroad(t_map **map)
+int game_loop(t_map **map)
+{
+    int x;
+
+    x = 0;
+    while (x < WIDTH)
+    {
+      (*map)->game->camera_x = 2 * x / double(WIDTH) - 1;
+      (*map)->game->ray_dir_x = (*map)->player->dir_x + (*map)->player->plane_x * (*map)->game->camera_x;
+      (*map)->game->ray_dir_y = (*map)->player->dir_y + (*map)->player->plane_y * (*map)->game->camera_x;
+    }
+    return (0);
+}
+
+int	game_crossroad(t_map **map)
 {
 	setting_player(map);
     setting_window(map);
-    // game_loop(map);
+    game_loop(map);
     return (0);
 }

@@ -27,6 +27,5 @@ int	main(int argc, char *argv[])
 		parse_crossroad(argv[1], &map);
 	raycasting_crossroad(&map);
 	free_map(&map);
-	//comment
 	return (0);
 }

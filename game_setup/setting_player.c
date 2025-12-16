@@ -88,15 +88,13 @@ int setting_position(t_map **map)
     return (0);
 }
 
-// int setting_plane(t_map **map)
-// {
-
-// }
-
 int setting_player(t_map **map)
 {
-    // setting_plane(map); maybe just set to >> 0.66 (90stupnu)
     setting_position(map);
     setting_direction(map);
+    (*map)->player->plane_x = 0;
+    (*map)->player->plane_y = 0,66;
+    (*map)->time = 0;
+    (*map)->old_time = 0;
     return (0);
 }
