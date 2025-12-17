@@ -51,8 +51,8 @@ typedef struct	game_information{
 	double	camera_x;
 	double	ray_dir_x;
 	double	ray_dir_y;
-	double	map_x;
-	double	map_y;
+	int		map_x;
+	int		map_y;
 	double	side_dist_x;
 	double	side_dist_y;
 	double	delta_dist_x;

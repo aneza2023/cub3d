@@ -53,10 +53,19 @@ int game_loop(t_map **map)
     return (0);
 }
 
+int where_in_map(t_map **map)
+{
+    (*map)->game->map_x = (int)(*map)->player->pos_x;
+    (*map)->game->map_y = (int)(*map)->player->pos_y;
+    (*map)->game->delta_dist_x = 
+    if ((*map))
+}
+
 int	game_crossroad(t_map **map)
 {
 	setting_player(map);
     setting_window(map);
     game_loop(map);
+    where_in_map(map);
     return (0);
 }
