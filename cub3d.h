@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahavrank <ahavrank@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anezkahavrankova <anezkahavrankova@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 22:09:57 by anezkahavra       #+#    #+#             */
-/*   Updated: 2025/12/11 22:02:14 by ahavrank         ###   ########.fr       */
+/*   Updated: 2025/12/17 15:33:38 by anezkahavra      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct game_player{
 } t_player;
 
 typedef struct	game_information{
+	mlx_t	*mlx;
 	double	camera_x;
 	double	ray_dir_x;
 	double	ray_dir_y;
@@ -74,7 +75,7 @@ typedef struct map{
 	t_player	*player;
 	double		old_time;
 	double		time;
-	t_game_info	game;
+	t_game_info	*game;
 } t_map;
 
 

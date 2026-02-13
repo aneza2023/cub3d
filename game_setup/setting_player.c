@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   setting_player.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahavrank <ahavrank@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anezkahavrankova <anezkahavrankova@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 19:43:55 by ahavrank          #+#    #+#             */
-/*   Updated: 2025/12/11 21:54:53 by ahavrank         ###   ########.fr       */
+/*   Updated: 2025/12/17 15:41:24 by anezkahavra      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
 int setting_direction_cnt(t_map **map)
 {
@@ -83,8 +83,8 @@ int setting_position(t_map **map)
 		}
 		i++;
 	}
-    // printf("x: %d\n", (*map)->player->pos_x);
-    // printf("y: %d\n", (*map)->player->pos_y);
+    // printf("x: %f\n", (*map)->player->pos_x);
+    // printf("y: %f\n", (*map)->player->pos_y);
     return (0);
 }
 
@@ -93,7 +93,7 @@ int setting_player(t_map **map)
     setting_position(map);
     setting_direction(map);
     (*map)->player->plane_x = 0;
-    (*map)->player->plane_y = 0,66;
+    // (*map)->player->plane_y = 0,66; now issue because not used
     (*map)->time = 0;
     (*map)->old_time = 0;
     return (0);
