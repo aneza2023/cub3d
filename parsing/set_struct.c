@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_struct.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahavrank <ahavrank@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 21:35:21 by ahavrank          #+#    #+#             */
-/*   Updated: 2025/11/26 21:44:09 by ahavrank         ###   ########.fr       */
+/*   Updated: 2026/02/17 14:08:58 by anezka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	set_start_colours(t_map **map)
 	(*map)->C_colour->blue = -1;
 	(*map)->C_colour->red = -1;
 	(*map)->C_colour->green = -1;
+	(*map)->map_info = NULL;
 	(*map)->map_info = malloc(sizeof(t_map_info));
 	if ((*map)->map_info == NULL)
 	{
@@ -51,6 +52,7 @@ void	set_start_colours(t_map **map)
 	}
 	(*map)->map_info->line_count = 0;
 	(*map)->map_info->space_count = 0;
+	(*map)->player = NULL;
 	set_player(map);
 }
 
@@ -66,8 +68,12 @@ void	set_map_struct(t_map **map)
 	(*map)->SO_texture = NULL;
 	(*map)->WE_texture = NULL;
 	(*map)->EA_texture = NULL;
-	(*map)->C_colour = malloc(sizeof(t_colour));
+	(*map)->F_colour = NULL;
+	(*map)->C_colour = NULL;
+	(*map)->map = NULL;
+	(*map)->head_map = NULL;
 	(*map)->F_colour = malloc(sizeof(t_colour));
+	(*map)->C_colour = malloc(sizeof(t_colour));
 	if ((*map)->F_colour == NULL || (*map)->C_colour == NULL)
 	{
 		perror("");
@@ -75,6 +81,4 @@ void	set_map_struct(t_map **map)
 		exit (1);
 	}
 	set_start_colours(map);
-	(*map)->map = NULL;
-	(*map)->head_map = NULL;
 }

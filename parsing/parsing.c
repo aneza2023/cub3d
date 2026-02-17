@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahavrank <ahavrank@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 10:49:57 by anezkahavra       #+#    #+#             */
-/*   Updated: 2025/11/26 21:38:52 by ahavrank         ###   ########.fr       */
+/*   Updated: 2026/02/17 15:04:36 by anezka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int	check_all(t_map **map, char *line)
 		free_map(map);
 		exit (1);
 	}
-	//check map ok
 	return (0);
 }
 

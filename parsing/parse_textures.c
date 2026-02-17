@@ -6,11 +6,22 @@
 /*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 16:49:25 by anezka            #+#    #+#             */
-/*   Updated: 2026/02/17 13:02:42 by anezka           ###   ########.fr       */
+/*   Updated: 2026/02/17 15:48:51 by anezka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+char	*trim_n_cleanup(char **strings, char *path)
+{
+	char	*trimpath;
+
+	free(strings);
+	if (path != NULL)
+		trimpath = ft_strtrim(path, "\n");
+	free(path);
+	return(trimpath);
+}
 
 char *texture_value(char *line)
 {
@@ -37,8 +48,7 @@ char *texture_value(char *line)
 		free(strings[i]);
 		i++;
 	}
-	free(strings);
-	path = ft_strtrim(path, "\n");
+	path = trim_n_cleanup(strings, path);
 	return (path);
 }
 
@@ -50,6 +60,7 @@ int	parsing_elements_textures_cnt(char *line, t_map **map)
 		if ((*map)->WE_texture == NULL)
 		{
 			free(line);
+			get_next_line(-3);
 			free_map(map);
 			exit (1);
 		}
@@ -60,11 +71,12 @@ int	parsing_elements_textures_cnt(char *line, t_map **map)
 		if ((*map)->EA_texture == NULL)
 		{
 			free(line);
+			get_next_line(-3);
 			free_map(map);
 			exit (1);
 		}
 	}
-	parsing_elements_colours(line, map);
+	parsing_elements_colours(line, map); //memory checked here
 	parsing_elements_colours_cnt(line, map);
 	return (0);
 }
@@ -78,6 +90,7 @@ int	parsing_elements_textures(char *line, t_map **map)
 		if ((*map)->NO_texture == NULL)
 		{
 			free(line);
+			get_next_line(-3);
 			free_map(map);
 			exit (1);
 		}
@@ -88,6 +101,7 @@ int	parsing_elements_textures(char *line, t_map **map)
 		if ((*map)->SO_texture == NULL)
 		{
 			free(line);
+			get_next_line(-3);
 			free_map(map);
 			exit (1);
 		}

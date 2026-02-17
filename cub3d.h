@@ -6,7 +6,7 @@
 /*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 22:09:57 by anezkahavra       #+#    #+#             */
-/*   Updated: 2026/02/17 12:50:24 by anezka           ###   ########.fr       */
+/*   Updated: 2026/02/17 15:47:08 by anezka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 #include <stdlib.h>
 #include "libft/libft.h"
 #include "MLX42/include/MLX42/MLX42.h"
-#include "libft/getnextline/get_next_line.h"
+
 
 # define HEIGHT 800 
 # define WIDTH 800
@@ -82,6 +82,8 @@ typedef struct map{
 
 
 void	free_map(t_map **map);
+void	free_pt3(t_map **map);
+void	free_strings(char **strings, int count);
 char	*texture_value(char *line);
 int     parsing_elements_textures(char *line, t_map **map);
 int		parsing_elements_textures_cnt(char *line, t_map **map);
@@ -118,5 +120,6 @@ int		setting_direction(t_map **map);
 int		setting_direction_cnt(t_map **map);
 int		setting_position(t_map **map);
 int		setting_plane(t_map **map);
+char	*trim_n_cleanup(char **strings, char *path);
 
 #endif

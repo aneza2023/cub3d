@@ -6,7 +6,7 @@
 /*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 16:49:14 by anezka            #+#    #+#             */
-/*   Updated: 2025/10/18 21:43:46 by anezka           ###   ########.fr       */
+/*   Updated: 2026/02/17 15:50:17 by anezka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ int	colour_values(char *line, int colour)
 	if (count != 3)
 	{
 		ft_putstr_fd("Too many arguments for colour\n", STDERR_FILENO);
+		free_strings(strings, count);
 		return (-1);
 	}
 	colour_nb = colour_values_cnt(strings, colour);
