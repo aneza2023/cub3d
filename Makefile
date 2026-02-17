@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ahavrank <ahavrank@student.42.fr>          +#+  +:+       +#+         #
+#    By: anezka <anezka@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/16 22:30:01 by anezkahavra       #+#    #+#              #
-#    Updated: 2025/12/11 22:07:10 by ahavrank         ###   ########.fr        #
+#    Updated: 2026/02/17 12:52:22 by anezka           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SOURCES = main.c\
 
 LIBFTLIB = libft/libft.a
 MLX42LIB = MLX42/build/libmlx42.a
+
 
 OBJS = $(SOURCES:.c=.o)
 CC = cc

@@ -6,7 +6,7 @@
 /*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 16:49:25 by anezka            #+#    #+#             */
-/*   Updated: 2025/10/18 21:43:41 by anezka           ###   ########.fr       */
+/*   Updated: 2026/02/17 13:02:42 by anezka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ char *texture_value(char *line)
 		i++;
 	}
 	free(strings);
+	path = ft_strtrim(path, "\n");
 	return (path);
 }
 
