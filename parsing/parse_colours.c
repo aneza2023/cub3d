@@ -6,7 +6,7 @@
 /*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 20:46:26 by anezka            #+#    #+#             */
-/*   Updated: 2026/02/17 15:51:56 by anezka           ###   ########.fr       */
+/*   Updated: 2026/02/17 16:26:49 by anezka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	parsing_elements_colours_cnt(char *line, t_map **map)
 		if ((*map)->C_colour->red == -1)
 		{
 			free(line);
+			get_next_line(-3);
 			free_map(map);
 			exit (1);
 		}
@@ -27,6 +28,7 @@ int	parsing_elements_colours_cnt(char *line, t_map **map)
 		if ((*map)->C_colour->green == -1)
 		{
 			free(line);
+			get_next_line(-3);
 			free_map(map);
 			exit (1);
 		}
@@ -34,6 +36,7 @@ int	parsing_elements_colours_cnt(char *line, t_map **map)
 		if ((*map)->C_colour->blue == -1)
 		{
 			free(line);
+			get_next_line(-3);
 			free_map(map);
 			exit (1);
 		}
@@ -57,7 +60,7 @@ int	parsing_elements_colours(char *line, t_map **map)
         if ((*map)->F_colour->green == -1)
         {
             free(line);
-			// get_next_line(-3);
+			get_next_line(-3);
             free_map(map);
             exit (1);
         }
@@ -65,7 +68,7 @@ int	parsing_elements_colours(char *line, t_map **map)
         if ((*map)->F_colour->blue == -1)
         {
             free(line);
-			// get_next_line(-3);
+			get_next_line(-3);
             free_map(map);
             exit (1);
         }

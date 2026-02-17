@@ -6,7 +6,7 @@
 /*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 16:49:14 by anezka            #+#    #+#             */
-/*   Updated: 2026/02/17 15:50:17 by anezka           ###   ########.fr       */
+/*   Updated: 2026/02/17 16:24:49 by anezka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int	check_other_colour(char *string)
 			return (1);
 		i++;
 	}
+	free(trim_str);
 	return (0);
 
 }
@@ -56,6 +57,7 @@ int	check_other_colour(char *string)
 int	colour_values_cnt(char **strings, int colour)
 {
 	int		colour_nb;
+	char	*colour_nbc;
 
 	if (colour == 1)
 	{
@@ -64,7 +66,9 @@ int	colour_values_cnt(char **strings, int colour)
 			ft_putstr_fd("Colours values are invalid\n", STDERR_FILENO);
 			return (-1);
 		}
-		colour_nb = ft_atoi(ft_strtrim(strings[0], "FC"));
+		colour_nbc = ft_strtrim(strings[0], "FC");
+		colour_nb = ft_atoi(colour_nbc);
+		free(colour_nbc);
 	}
 	if (check_other_colour(strings[1]) == 1 || check_other_colour(strings[2]) == 1)
 	{
@@ -101,6 +105,10 @@ int	colour_values(char *line, int colour)
 		colour_nb = -1;
 	}
 	if (colour_nb < 0)
+	{
+		free_strings(strings, count);
 		return (-1);
+	}
+	free_strings(strings, count);
 	return(colour_nb);
 }
