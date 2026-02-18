@@ -6,7 +6,7 @@
 /*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 21:35:21 by ahavrank          #+#    #+#             */
-/*   Updated: 2026/02/18 12:52:58 by anezka           ###   ########.fr       */
+/*   Updated: 2026/02/18 15:37:53 by anezka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	set_player(t_map **map)
 	(*map)->player = malloc(sizeof(t_player));
 	if ((*map)->player == NULL)
 	{
-		perror("");
+		perror("Malloc failed");
 		free_map(map);
 		exit (1);
 	}
@@ -28,7 +28,7 @@ void	set_head(t_map **map)
 	(*map)->head_map = malloc(sizeof(char *) * ((*map)->map_info->line_count + 1));
 	if ((*map)->head_map == NULL)
 	{
-		perror("");
+		perror("Malloc failed");
 		free_map(map);
 		exit (1);
 	}
@@ -46,7 +46,7 @@ void	set_start_colours(t_map **map)
 	(*map)->map_info = malloc(sizeof(t_map_info));
 	if ((*map)->map_info == NULL)
 	{
-		perror("");
+		perror("Malloc failed");
 		free_map(map);
 		exit (1);
 	}
@@ -61,7 +61,7 @@ void	set_map_struct(t_map **map)
 	*map = malloc(sizeof(t_map));
 	if (*map == NULL)
 	{
-		perror("");
+		perror("Malloc failed");
 		exit(1);
 	}
 	(*map)->NO_texture = NULL;
@@ -76,7 +76,7 @@ void	set_map_struct(t_map **map)
 	(*map)->C_colour = malloc(sizeof(t_colour));
 	if ((*map)->F_colour == NULL || (*map)->C_colour == NULL)
 	{
-		perror("");
+		perror("Malloc failed");
 		free_map(map);
 		exit (1);
 	}

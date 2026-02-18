@@ -6,7 +6,7 @@
 /*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 16:30:11 by anezka            #+#    #+#             */
-/*   Updated: 2026/02/18 11:13:00 by anezka           ###   ########.fr       */
+/*   Updated: 2026/02/18 15:36:25 by anezka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int	parse_map(char *line, t_map **map)
 	temp_map = malloc(sizeof(char *) * (count + 2)); //issue here if cont
 	if (temp_map == NULL)
 	{
-		perror("");
+		perror("Malloc failed");
 		free_in_parsing_map(line, map, temp_map);
 	}
 	int i = 0;
