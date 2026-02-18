@@ -6,7 +6,7 @@
 /*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 16:49:25 by anezka            #+#    #+#             */
-/*   Updated: 2026/02/17 15:48:51 by anezka           ###   ########.fr       */
+/*   Updated: 2026/02/18 11:15:20 by anezka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,11 @@ int	parsing_elements_textures_cnt(char *line, t_map **map)
 			exit (1);
 		}
 	}
-	parsing_elements_colours(line, map); //memory checked here
+	parsing_elements_colours(line, map);
 	parsing_elements_colours_cnt(line, map);
 	return (0);
 }
 
-// for memory purposes might need to finish running gnl when exiting
 int	parsing_elements_textures(char *line, t_map **map)
 {
 	if (ft_strncmp(line, "NO ", 3) == 0)

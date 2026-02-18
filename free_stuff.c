@@ -6,7 +6,7 @@
 /*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 15:33:47 by anezka            #+#    #+#             */
-/*   Updated: 2026/02/17 15:45:15 by anezka           ###   ########.fr       */
+/*   Updated: 2026/02/18 11:06:10 by anezka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,11 @@ void	free_strings(char **strings, int count)
 	while (i < count)
 	{
 		free(strings[i]);
+		strings[i] = NULL;
 		i++;
 	}
 	free(strings);
+	strings = NULL;
 }
 
 void	map_invalid(t_map **map)
@@ -32,15 +34,23 @@ void	map_invalid(t_map **map)
 	exit (1);
 }
 
-void	free_in_parsing_map(char *line, t_map **map)
+void	free_in_parsing_map(char *line, t_map **map, char **temp_map)
 {
 	free(line);
 	free_map(map);
+	get_next_line(-3);
+	if (temp_map != NULL)
+		free(temp_map);
 	exit(1);
 }
 
 void	free_pt3(t_map **map)
 {
+	if ((*map)->map != NULL)
+	{
+		free((*map)->map);
+		(*map)->map = NULL;
+	}
 	if ((*map)->map_info != NULL)
 	{
 		free((*map)->map_info);

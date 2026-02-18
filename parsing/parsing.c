@@ -6,7 +6,7 @@
 /*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 10:49:57 by anezkahavra       #+#    #+#             */
-/*   Updated: 2026/02/17 16:28:13 by anezka           ###   ########.fr       */
+/*   Updated: 2026/02/18 12:54:37 by anezka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ int	parse_crossroad(char *argv, t_map **map)
 		if (ft_strncmp(line, "NO ", 3) == 0 || ft_strncmp(line, "SO ", 3) == 0 || ft_strncmp(line, "WE ", 3) == 0
 			|| ft_strncmp(line, "EA ", 3) == 0 || ft_strncmp(line, "F ", 2) == 0 || ft_strncmp(line, "C ", 2) == 0)
 			parsing_elements_textures(line, map);
-		else //start memory here
+		else
 			prepare_parse_map(line, map);
-		free(line); // issue when comes to end of file but need to work with it more, after proper strdup and othert should be ok
+		free(line);
 		line = get_next_line(fd);
 		if (!line)
 			break ;

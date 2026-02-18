@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahavrank <ahavrank@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 16:30:11 by anezka            #+#    #+#             */
-/*   Updated: 2025/12/11 18:42:51 by ahavrank         ###   ########.fr       */
+/*   Updated: 2026/02/18 11:13:00 by anezka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,11 +92,11 @@ int	parse_map(char *line, t_map **map)
 	static int	count;
 	char		**temp_map;
 
-	temp_map = malloc(sizeof(char *) * (count + 2));
+	temp_map = malloc(sizeof(char *) * (count + 2)); //issue here if cont
 	if (temp_map == NULL)
 	{
 		perror("");
-		free_in_parsing_map(line, map);
+		free_in_parsing_map(line, map, temp_map);
 	}
 	int i = 0;
 	while ((*map)->map != NULL && (*map)->map[i] != NULL)
@@ -104,12 +104,13 @@ int	parse_map(char *line, t_map **map)
 		temp_map[i] = (*map)->map[i];
 		i++;
 	}
+	free((*map)->map);
 	(*map)->map = temp_map;
 	(*map)->map[count] = ft_strdup(line);
 	if ((*map)->map[count] == NULL)
 	{
 		ft_putstr_fd("Map is not valid\n", STDERR_FILENO);
-		free_in_parsing_map(line, map);
+		free_in_parsing_map(line, map, temp_map);
 	}
 	count++;
 	(*map)->map[count] = NULL;
@@ -124,6 +125,7 @@ int	prepare_parse_map(char *line, t_map **map)
 	{
 		ft_putstr_fd("Incorrect symbols found\n", STDERR_FILENO);
 		free(line);
+		get_next_line(-3);
 		free_map(map);
 		exit (1);
 	}
@@ -133,6 +135,7 @@ int	prepare_parse_map(char *line, t_map **map)
 		{
 			ft_putstr_fd("Empty line present inside of map\n", STDERR_FILENO);
 			free(line);
+			get_next_line(-3);
 			free_map(map);
 			exit (1);
 		}

@@ -6,7 +6,7 @@
 /*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 22:09:57 by anezkahavra       #+#    #+#             */
-/*   Updated: 2026/02/17 15:47:08 by anezka           ###   ########.fr       */
+/*   Updated: 2026/02/17 17:50:14 by anezka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ int		colour_values(char *line, int colour);
 int		part_of_map(char *line);
 int		prepare_parse_map(char *line, t_map **map);
 int		gibberish_present(char *line);
-void	free_in_parsing_map(char *line, t_map **map);
+void	free_in_parsing_map(char *line, t_map **map, char **temp_map);
 int		empty_line(char *line);
 int		check_first_border(char *line);
 int		compare_start_borders(int start, t_map **map, int spot);
