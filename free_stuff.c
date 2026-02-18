@@ -6,7 +6,7 @@
 /*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 15:33:47 by anezka            #+#    #+#             */
-/*   Updated: 2026/02/18 11:06:10 by anezka           ###   ########.fr       */
+/*   Updated: 2026/02/18 16:41:01 by anezka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,23 +25,6 @@ void	free_strings(char **strings, int count)
 	}
 	free(strings);
 	strings = NULL;
-}
-
-void	map_invalid(t_map **map)
-{
-	ft_putstr_fd("Map is invalid\n", STDERR_FILENO);
-	free_map(map);
-	exit (1);
-}
-
-void	free_in_parsing_map(char *line, t_map **map, char **temp_map)
-{
-	free(line);
-	free_map(map);
-	get_next_line(-3);
-	if (temp_map != NULL)
-		free(temp_map);
-	exit(1);
 }
 
 void	free_pt3(t_map **map)

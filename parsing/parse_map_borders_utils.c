@@ -6,7 +6,7 @@
 /*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 16:29:01 by anezka            #+#    #+#             */
-/*   Updated: 2026/02/18 15:36:16 by anezka           ###   ########.fr       */
+/*   Updated: 2026/02/18 16:37:16 by anezka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,4 +96,18 @@ int	*space_positions(t_map **map, int i)
 		count--;
 	}
 	return (positions);
+}
+
+int	check_first_border(char *line)
+{
+	int	i;
+
+	i = 0;
+	while (line[i] != '\0')
+	{
+		if (line[i] == '0')
+			return (1);
+		i++;
+	}
+	return (0);
 }

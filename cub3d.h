@@ -6,7 +6,7 @@
 /*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 22:09:57 by anezkahavra       #+#    #+#             */
-/*   Updated: 2026/02/17 17:50:14 by anezka           ###   ########.fr       */
+/*   Updated: 2026/02/18 16:50:00 by anezka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,9 @@ typedef struct map{
 
 void	free_map(t_map **map);
 void	free_pt3(t_map **map);
+void    free_borders_loop(int *space_pos, t_map **map);
+void	free_colours(char *line, t_map **map);
+void    print_struct(t_map **map);
 void	free_strings(char **strings, int count);
 char	*texture_value(char *line);
 int     parsing_elements_textures(char *line, t_map **map);

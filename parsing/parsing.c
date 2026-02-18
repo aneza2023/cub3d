@@ -6,7 +6,7 @@
 /*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 10:49:57 by anezkahavra       #+#    #+#             */
-/*   Updated: 2026/02/18 15:37:19 by anezka           ###   ########.fr       */
+/*   Updated: 2026/02/18 17:20:19 by anezka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,19 +69,26 @@ int	correct_textures(t_map **map, char *line)
 	return (0);
 }
 
-int	parse_crossroad(char *argv, t_map **map)
+int	opening_cubfile(char *argv)
 {
 	int fd;
-	char *line;
-	// int	i;
 
-	correct_format(argv);
 	fd = open(argv, O_RDONLY);
 	if (fd == -1)
 	{
 		perror(".cub file");
 		exit (1);
 	}
+	return (fd);
+}
+
+int	parse_crossroad(char *argv, t_map **map)
+{
+	int fd;
+	char *line;
+
+	correct_format(argv);
+	fd = opening_cubfile(argv);
 	set_map_struct(map);
 	line = get_next_line(fd);
 	while (line)
@@ -97,14 +104,9 @@ int	parse_crossroad(char *argv, t_map **map)
 			break ;
 	}
 	check_all_borders(map);
-	// i = 0;
-	// while((*map)->map != NULL && (*map)->map[i] != NULL)
-	// {
-	// 	printf("map: %s", (*map)->map[i]);
-	// 	i++;
-	// }
 	check_all(map, line);
 	correct_textures(map, line);
+	// print_struct(map);
 	free(line);
 	return (0);
 }
