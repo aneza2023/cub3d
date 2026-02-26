@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahavrank <ahavrank@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 16:30:11 by anezka            #+#    #+#             */
-/*   Updated: 2025/12/11 18:42:51 by ahavrank         ###   ########.fr       */
+/*   Updated: 2026/02/18 16:16:08 by anezka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,60 +59,43 @@ int	compare_start_borders(int start, t_map **map, int spot)
 	return (0);
 }
 
-int	check_all_borders(t_map **map)
+char	**parse_map2(char *line, t_map **map, int count)
 {
-	int	start_border;
-	int	end_border;
-	int	i;
-	int	border_line;
+	char	**temp_map;
 
-	i = 0;
-	set_head(map);
-	while ((*map)->map && (*map)->map[i] != NULL)
+	temp_map = malloc(sizeof(char *) * (count + 2));
+	if (temp_map == NULL)
 	{
-		if (i == 0 || (*map)->map[i + 1] == NULL)
-			border_line = check_first_border((*map)->map[i]);
-		start_border = find_border((*map)->map[i], 0);
-		end_border = find_border((*map)->map[i], 1);
-		if (start_border == -1 || end_border == -1 || border_line == 1)
-			map_invalid(map);
-		if (compare_start_borders(start_border, map, i) == 1)
-			map_invalid(map);
-		if (compare_end_borders(end_border, map, i) == 1)
-			map_invalid(map);
-		if (space_inside_present((*map)->map[i]) == 0)
-			borders_around_space(map, i);
-		i++;
+		perror("Malloc failed");
+		free_in_parsing_map(line, map, temp_map);
 	}
-	return (0);
+	return (temp_map);
 }
 
 int	parse_map(char *line, t_map **map)
 {
 	static int	count;
 	char		**temp_map;
+	int			i;
 
-	temp_map = malloc(sizeof(char *) * (count + 2));
-	if (temp_map == NULL)
-	{
-		perror("");
-		free_in_parsing_map(line, map);
-	}
-	int i = 0;
+	temp_map = parse_map2(line, map, count);
+	i = 0;
 	while ((*map)->map != NULL && (*map)->map[i] != NULL)
 	{
 		temp_map[i] = (*map)->map[i];
 		i++;
 	}
+	free((*map)->map);
 	(*map)->map = temp_map;
 	(*map)->map[count] = ft_strdup(line);
 	if ((*map)->map[count] == NULL)
 	{
 		ft_putstr_fd("Map is not valid\n", STDERR_FILENO);
-		free_in_parsing_map(line, map);
+		free_in_parsing_map(line, map, temp_map);
 	}
 	count++;
 	(*map)->map[count] = NULL;
+	(*map)->map_info->line_count++;
 	return (0);
 }
 
@@ -124,6 +107,7 @@ int	prepare_parse_map(char *line, t_map **map)
 	{
 		ft_putstr_fd("Incorrect symbols found\n", STDERR_FILENO);
 		free(line);
+		get_next_line(-3);
 		free_map(map);
 		exit (1);
 	}
@@ -133,13 +117,13 @@ int	prepare_parse_map(char *line, t_map **map)
 		{
 			ft_putstr_fd("Empty line present inside of map\n", STDERR_FILENO);
 			free(line);
+			get_next_line(-3);
 			free_map(map);
 			exit (1);
 		}
 		return (0);
 	}
 	parse_map(line, map);
-	(*map)->map_info->line_count++;
 	before_map = 1;
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahavrank <ahavrank@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 10:49:57 by anezkahavra       #+#    #+#             */
-/*   Updated: 2025/11/26 21:38:52 by ahavrank         ###   ########.fr       */
+/*   Updated: 2026/02/18 17:20:19 by anezka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,22 +30,65 @@ int	check_all(t_map **map, char *line)
 		free_map(map);
 		exit (1);
 	}
-	//check map ok
 	return (0);
+}
+
+int	correct_format(char *argv)
+{
+	if (ft_strlen(argv) < 5)
+	{
+		ft_putstr_fd("Program accepts only single argument in *.cub format\n", STDERR_FILENO);
+		exit (1);
+	}
+	if (ft_strncmp(argv + ft_strlen(argv) - 4, ".cub", 5) != 0)
+	{
+		ft_putstr_fd("Program accepts only single argument in *.cub format\n", STDERR_FILENO);
+		exit (1);
+	}
+	return (0);
+}
+
+int	correct_textures(t_map **map, char *line)
+{
+	int	fd;
+	int	fd2;
+	int	fd3;
+	int	fd4;
+
+	fd = open((*map)->NO_texture, O_RDONLY);
+	fd2 = open((*map)->SO_texture, O_RDONLY);
+	fd3 = open((*map)->EA_texture, O_RDONLY);
+	fd4 = open((*map)->WE_texture, O_RDONLY);
+	if (fd == -1 || fd2 == -1 || fd3 == -1 || fd4 == -1)
+	{
+		free_map(map);
+		free(line);
+		perror("Textures");
+		exit (1);
+	}
+	return (0);
+}
+
+int	opening_cubfile(char *argv)
+{
+	int fd;
+
+	fd = open(argv, O_RDONLY);
+	if (fd == -1)
+	{
+		perror(".cub file");
+		exit (1);
+	}
+	return (fd);
 }
 
 int	parse_crossroad(char *argv, t_map **map)
 {
 	int fd;
 	char *line;
-	int	i;
 
-	fd = open(argv, O_RDONLY);
-	if (fd == -1)
-	{
-		perror("");
-		exit (1);
-	}
+	correct_format(argv);
+	fd = opening_cubfile(argv);
 	set_map_struct(map);
 	line = get_next_line(fd);
 	while (line)
@@ -55,19 +98,15 @@ int	parse_crossroad(char *argv, t_map **map)
 			parsing_elements_textures(line, map);
 		else
 			prepare_parse_map(line, map);
-		free(line); // issue when comes to end of file but need to work with it more, after proper strdup and othert should be ok
+		free(line);
 		line = get_next_line(fd);
 		if (!line)
 			break ;
 	}
 	check_all_borders(map);
-	i = 0;
-	while((*map)->map != NULL && (*map)->map[i] != NULL)
-	{
-		printf("map: %s", (*map)->map[i]);
-		i++;
-	}
 	check_all(map, line);
+	correct_textures(map, line);
+	// print_struct(map);
 	free(line);
 	return (0);
 }

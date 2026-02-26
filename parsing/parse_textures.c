@@ -6,11 +6,22 @@
 /*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 16:49:25 by anezka            #+#    #+#             */
-/*   Updated: 2025/10/18 21:43:41 by anezka           ###   ########.fr       */
+/*   Updated: 2026/02/18 11:15:20 by anezka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+char	*trim_n_cleanup(char **strings, char *path)
+{
+	char	*trimpath;
+
+	free(strings);
+	if (path != NULL)
+		trimpath = ft_strtrim(path, "\n");
+	free(path);
+	return(trimpath);
+}
 
 char *texture_value(char *line)
 {
@@ -37,7 +48,7 @@ char *texture_value(char *line)
 		free(strings[i]);
 		i++;
 	}
-	free(strings);
+	path = trim_n_cleanup(strings, path);
 	return (path);
 }
 
@@ -49,6 +60,7 @@ int	parsing_elements_textures_cnt(char *line, t_map **map)
 		if ((*map)->WE_texture == NULL)
 		{
 			free(line);
+			get_next_line(-3);
 			free_map(map);
 			exit (1);
 		}
@@ -59,6 +71,7 @@ int	parsing_elements_textures_cnt(char *line, t_map **map)
 		if ((*map)->EA_texture == NULL)
 		{
 			free(line);
+			get_next_line(-3);
 			free_map(map);
 			exit (1);
 		}
@@ -68,7 +81,6 @@ int	parsing_elements_textures_cnt(char *line, t_map **map)
 	return (0);
 }
 
-// for memory purposes might need to finish running gnl when exiting
 int	parsing_elements_textures(char *line, t_map **map)
 {
 	if (ft_strncmp(line, "NO ", 3) == 0)
@@ -77,6 +89,7 @@ int	parsing_elements_textures(char *line, t_map **map)
 		if ((*map)->NO_texture == NULL)
 		{
 			free(line);
+			get_next_line(-3);
 			free_map(map);
 			exit (1);
 		}
@@ -87,6 +100,7 @@ int	parsing_elements_textures(char *line, t_map **map)
 		if ((*map)->SO_texture == NULL)
 		{
 			free(line);
+			get_next_line(-3);
 			free_map(map);
 			exit (1);
 		}

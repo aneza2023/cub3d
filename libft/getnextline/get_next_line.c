@@ -57,6 +57,17 @@ int	help02(char **buff, int fd)
 	return (text);
 } */
 
+int	updated_check(char *remainder, int fd)
+{
+	if (fd == -3)
+	{
+		// printf("remainder: %s", remainder);
+		free(remainder);
+		return (1);
+	}
+	return (0);
+}
+
 char	*get_next_line(int fd)
 {
 	char		*buff;
@@ -64,7 +75,7 @@ char	*get_next_line(int fd)
 	int			bytestread;
 	static char	*remainder;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || fd > 100)
+	if (updated_check(remainder, fd) == 1 || fd < 0 || BUFFER_SIZE <= 0 || fd > 100)
 		return (NULL);
 	bytestread = help02(&buff, fd);
 	if (bytestread == 0 && remainder == NULL)

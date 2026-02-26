@@ -6,7 +6,7 @@
 /*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 16:49:14 by anezka            #+#    #+#             */
-/*   Updated: 2025/10/18 21:43:46 by anezka           ###   ########.fr       */
+/*   Updated: 2026/02/18 17:19:04 by anezka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int	check_other_colour(char *string)
 			return (1);
 		i++;
 	}
+	free(trim_str);
 	return (0);
 
 }
@@ -56,21 +57,18 @@ int	check_other_colour(char *string)
 int	colour_values_cnt(char **strings, int colour)
 {
 	int		colour_nb;
+	char	*colour_nbc;
 
 	if (colour == 1)
 	{
 		if (check_first_colour(strings[0]) == 1)
-		{
-			ft_putstr_fd("Colours values are invalid\n", STDERR_FILENO);
 			return (-1);
-		}
-		colour_nb = ft_atoi(ft_strtrim(strings[0], "FC"));
+		colour_nbc = ft_strtrim(strings[0], "FC");
+		colour_nb = ft_atoi(colour_nbc);
+		free(colour_nbc);
 	}
 	if (check_other_colour(strings[1]) == 1 || check_other_colour(strings[2]) == 1)
-	{
-		ft_putstr_fd("Colours values are invalid\n", STDERR_FILENO);
 		return (-1);
-	}
 	if (colour == 2)
 		colour_nb = ft_atoi(strings[1]);
 	if (colour == 3)
@@ -91,15 +89,17 @@ int	colour_values(char *line, int colour)
 	if (count != 3)
 	{
 		ft_putstr_fd("Too many arguments for colour\n", STDERR_FILENO);
+		free_strings(strings, count);
 		return (-1);
 	}
 	colour_nb = colour_values_cnt(strings, colour);
-	if (colour_nb > 255)
+	if (colour_nb > 255 || colour_nb < 0)
 	{
 		ft_putstr_fd("Colour values are invalid\n", STDERR_FILENO);
+		free_strings(strings, count);
 		colour_nb = -1;
-	}
-	if (colour_nb < 0)
 		return (-1);
+	}
+	free_strings(strings, count);
 	return(colour_nb);
 }

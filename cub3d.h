@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahavrank <ahavrank@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 22:09:57 by anezkahavra       #+#    #+#             */
-/*   Updated: 2025/12/11 20:23:00 by ahavrank         ###   ########.fr       */
+/*   Updated: 2026/02/18 16:50:00 by anezka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@
 #include <fcntl.h>
 #include <stdlib.h>
 #include "libft/libft.h"
+#include "MLX42/include/MLX42/MLX42.h"
+
+
+# define HEIGHT 800 
+# define WIDTH 800
 
 typedef struct colours_for_map{
 	int	red;
@@ -43,6 +48,20 @@ typedef struct game_player{
 	double	plane_y;
 } t_player;
 
+typedef struct	game_information{
+	mlx_t	*mlx;
+	double	camera_x;
+	double	ray_dir_x;
+	double	ray_dir_y;
+	int		map_x;
+	int		map_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	
+}	t_game_info;
+
 
 typedef struct map{
 	char		*NO_texture;
@@ -55,11 +74,19 @@ typedef struct map{
 	char		**head_map;
 	t_map_info	*map_info;
 	t_player	*player;
+	double		old_time;
+	double		time;
+	t_game_info	*game;
 } t_map;
 
 
 
 void	free_map(t_map **map);
+void	free_pt3(t_map **map);
+void    free_borders_loop(int *space_pos, t_map **map);
+void	free_colours(char *line, t_map **map);
+void    print_struct(t_map **map);
+void	free_strings(char **strings, int count);
 char	*texture_value(char *line);
 int     parsing_elements_textures(char *line, t_map **map);
 int		parsing_elements_textures_cnt(char *line, t_map **map);
@@ -76,7 +103,7 @@ int		colour_values(char *line, int colour);
 int		part_of_map(char *line);
 int		prepare_parse_map(char *line, t_map **map);
 int		gibberish_present(char *line);
-void	free_in_parsing_map(char *line, t_map **map);
+void	free_in_parsing_map(char *line, t_map **map, char **temp_map);
 int		empty_line(char *line);
 int		check_first_border(char *line);
 int		compare_start_borders(int start, t_map **map, int spot);
@@ -90,11 +117,12 @@ void	set_head(t_map **map);
 void	set_start_colours(t_map **map);
 void	set_player(t_map **map);
 void	set_map_struct(t_map **map);
-int		raycasting_crossroad(t_map **map);
+int		game_crossroad(t_map **map);
 int		setting_player(t_map **map);
 int		setting_direction(t_map **map);
 int		setting_direction_cnt(t_map **map);
 int		setting_position(t_map **map);
 int		setting_plane(t_map **map);
+char	*trim_n_cleanup(char **strings, char *path);
 
 #endif

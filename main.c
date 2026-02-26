@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahavrank <ahavrank@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 22:09:42 by anezkahavra       #+#    #+#             */
-/*   Updated: 2025/12/11 19:25:54 by ahavrank         ###   ########.fr       */
+/*   Updated: 2026/02/17 13:18:46 by anezka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ int	main(int argc, char *argv[])
 	}
 	else
 		parse_crossroad(argv[1], &map);
-	raycasting_crossroad(&map);
+	// game_crossroad(&map);
 	free_map(&map);
-	//comment
 	return (0);
 }
