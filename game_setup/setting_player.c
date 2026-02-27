@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setting_player.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anezkahavrankova <anezkahavrankova@stud    +#+  +:+       +#+        */
+/*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 19:43:55 by ahavrank          #+#    #+#             */
-/*   Updated: 2025/12/17 15:41:24 by anezkahavra      ###   ########.fr       */
+/*   Updated: 2026/02/27 21:14:52 by anezka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,19 @@ int setting_direction_cnt(t_map **map)
         (*map)->player->dir_x = -1;
         (*map)->player->dir_y = 0;
     }
+    if ((*map)->player->direction == '\0')
+        map_invalid(map, "player not present");
     return (0);
 }
 
-int setting_direction(t_map **map)
+int 
+setting_direction(t_map **map)
 {
     int i;
 	int	j;
 
 	i = 0;
+    (*map)->head_map = (*map)->map;
     while((*map)->map[i] != NULL)
 	{
 		j = 0;

@@ -6,7 +6,7 @@
 /*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/18 16:38:02 by anezka            #+#    #+#             */
-/*   Updated: 2026/02/27 11:31:42 by anezka           ###   ########.fr       */
+/*   Updated: 2026/02/28 00:02:07 by anezka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	free_in_parsing_map(char *line, t_map **map, char **temp_map)
 
 void	map_invalid(t_map **map, char *msg)
 {
-	printf("%s", msg);
-	// (void)msg;
+	// printf("%s", msg);
+	(void)msg;
 	ft_putstr_fd("Map is invalid\n", STDERR_FILENO);
 	free_map(map);
 	exit (1);
@@ -34,7 +34,7 @@ void	map_invalid(t_map **map, char *msg)
 void    free_borders_loop(int *space_pos, t_map **map)
 {
     free(space_pos);
-    map_invalid(map, "free borders loop");
+    map_invalid(map, "Borders around map are incorrect\n");
 }
 
 void	free_colours(char *line, t_map **map)

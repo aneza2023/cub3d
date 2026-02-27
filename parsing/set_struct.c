@@ -6,7 +6,7 @@
 /*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 21:35:21 by ahavrank          #+#    #+#             */
-/*   Updated: 2026/02/27 09:46:01 by anezka           ###   ########.fr       */
+/*   Updated: 2026/02/27 15:11:41 by anezka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 // int	adding_collum_size(t_map **map, char *line)
 // {
+// 	int	count;
 // 	(*map)->collum_size = malloc(sizeof(int) * ((*map)->map_info->line_count));
 // 	if ((*map)->collum_size == NULL)
 // 	{
@@ -22,7 +23,7 @@
 // 		perror("");
 // 		exit (1);
 // 	}
-
+// 	while ((*map)->map_info->line_count >)
 // 	return (0);
 // }
 
@@ -35,18 +36,19 @@ void	set_player(t_map **map)
 		free_map(map);
 		exit (1);
 	}
+	(*map)->player->direction = '\0';
 }
 
-void	set_head(t_map **map)
-{
-	(*map)->head_map = malloc(sizeof(char *) * ((*map)->map_info->line_count + 1));
-	if ((*map)->head_map == NULL)
-	{
-		perror("Malloc failed");
-		free_map(map);
-		exit (1);
-	}
-}
+// void	set_head(t_map **map)
+// {
+// 	(*map)->head_map = malloc(sizeof(char *) * ((*map)->map_info->line_count + 1));
+// 	if ((*map)->head_map == NULL)
+// 	{
+// 		perror("Malloc failed");
+// 		free_map(map);
+// 		exit (1);
+// 	}
+// }
 
 void	set_start_colours(t_map **map)
 {

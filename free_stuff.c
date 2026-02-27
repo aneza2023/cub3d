@@ -6,7 +6,7 @@
 /*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 15:33:47 by anezka            #+#    #+#             */
-/*   Updated: 2026/02/18 16:41:01 by anezka           ###   ########.fr       */
+/*   Updated: 2026/02/27 21:01:24 by anezka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,6 @@ void	free_pt3(t_map **map)
 	{
 		free((*map)->player);
 		(*map)->player = NULL;
-	}
-	if ((*map)->head_map != NULL)
-	{
-		free((*map)->head_map);
-		(*map)->head_map = NULL;
 	}
 	free((*map));
 	(*map) = NULL;

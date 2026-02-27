@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_crossroad.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anezkahavrankova <anezkahavrankova@stud    +#+  +:+       +#+        */
+/*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 20:27:14 by ahavrank          #+#    #+#             */
-/*   Updated: 2025/12/17 16:36:05 by anezkahavra      ###   ########.fr       */
+/*   Updated: 2026/02/27 14:51:36 by anezka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ int where_in_map(t_map **map)
 
 int	game_crossroad(t_map **map)
 {
-	// setting_player(map);
-    setting_window(map);
+	setting_player(map);
+    // setting_window(map);
     // game_loop(map);
     // where_in_map(map);
     return (0);

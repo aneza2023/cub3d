@@ -6,7 +6,7 @@
 /*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 22:09:42 by anezkahavra       #+#    #+#             */
-/*   Updated: 2026/02/17 13:18:46 by anezka           ###   ########.fr       */
+/*   Updated: 2026/02/27 14:59:09 by anezka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(int argc, char *argv[])
 	}
 	else
 		parse_crossroad(argv[1], &map);
-	// game_crossroad(&map);
+	game_crossroad(&map);
 	free_map(&map);
 	return (0);
 }
