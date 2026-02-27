@@ -6,7 +6,7 @@
 /*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 16:30:11 by anezka            #+#    #+#             */
-/*   Updated: 2026/02/18 16:16:08 by anezka           ###   ########.fr       */
+/*   Updated: 2026/02/27 10:22:09 by anezka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,9 +93,11 @@ int	parse_map(char *line, t_map **map)
 		ft_putstr_fd("Map is not valid\n", STDERR_FILENO);
 		free_in_parsing_map(line, map, temp_map);
 	}
+	(*map)->map[count] = trim_map_line((*map)->map[count]);
 	count++;
 	(*map)->map[count] = NULL;
 	(*map)->map_info->line_count++;
+	// (*map)->collum_size = adding_collum_size(map, count);
 	return (0);
 }
 

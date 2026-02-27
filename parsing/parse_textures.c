@@ -6,7 +6,7 @@
 /*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 16:49:25 by anezka            #+#    #+#             */
-/*   Updated: 2026/02/18 11:15:20 by anezka           ###   ########.fr       */
+/*   Updated: 2026/02/27 10:21:29 by anezka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@ char	*trim_n_cleanup(char **strings, char *path)
 	char	*trimpath;
 
 	free(strings);
-	if (path != NULL)
-		trimpath = ft_strtrim(path, "\n");
+	if (path == NULL)
+		return (path);
+	trimpath = ft_strtrim(path, "\n");
 	free(path);
 	return(trimpath);
 }

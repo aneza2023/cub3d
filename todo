@@ -1,10 +1,25 @@
 
 // MLX uses fourth value for transperency, might be issue later, when colour dont look exactly as they should
 
-//free stuff
-//definatelly added player to struct without freeing, check later
-//ft_strtrim uses malloc >> needs to be freed
-
 //parsing map
-// not sure if there can be empty lines after map >> check later
-// if texture files work, check maybe later when opening them
+//not sure if there can be empty lines after map >> check later
+
+player needs to be present!!
+
+should this map be okay? 
+
+1111 11111111 1111111111111
+        11111110000011
+   111111111111000001111
+1111100N00000000000001 1
+1 1111111111111111111111
+
+or this one??
+1111111111     1111111111111
+11000111       111110000111
+11111111   1111111000000001
+            1110000000000011
+            1111000000000001
+    111111111110000000000011
+1110000000000000N00000001111
+111111111111111111111111111

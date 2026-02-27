@@ -6,11 +6,25 @@
 /*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 21:35:21 by ahavrank          #+#    #+#             */
-/*   Updated: 2026/02/18 15:37:53 by anezka           ###   ########.fr       */
+/*   Updated: 2026/02/27 09:46:01 by anezka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+// int	adding_collum_size(t_map **map, char *line)
+// {
+// 	(*map)->collum_size = malloc(sizeof(int) * ((*map)->map_info->line_count));
+// 	if ((*map)->collum_size == NULL)
+// 	{
+// 		free(line);
+// 		free_map(map);
+// 		perror("");
+// 		exit (1);
+// 	}
+
+// 	return (0);
+// }
 
 void	set_player(t_map **map)
 {

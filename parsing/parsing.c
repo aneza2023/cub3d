@@ -6,7 +6,7 @@
 /*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 10:49:57 by anezkahavra       #+#    #+#             */
-/*   Updated: 2026/02/18 17:20:19 by anezka           ###   ########.fr       */
+/*   Updated: 2026/02/27 11:26:31 by anezka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ int	correct_textures(t_map **map, char *line)
 		perror("Textures");
 		exit (1);
 	}
+	// adding_collum_size(map, line);
 	return (0);
 }
 
@@ -105,8 +106,8 @@ int	parse_crossroad(char *argv, t_map **map)
 	}
 	check_all_borders(map);
 	check_all(map, line);
-	correct_textures(map, line);
-	// print_struct(map);
+	// correct_textures(map, line);
+	print_struct(map);
 	free(line);
 	return (0);
 }

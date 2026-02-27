@@ -6,7 +6,7 @@
 /*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 22:09:57 by anezkahavra       #+#    #+#             */
-/*   Updated: 2026/02/18 16:50:00 by anezka           ###   ########.fr       */
+/*   Updated: 2026/02/27 11:28:25 by anezka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ typedef struct map{
 	double		old_time;
 	double		time;
 	t_game_info	*game;
+	int			*collum_size;
 } t_map;
 
 
@@ -108,7 +109,7 @@ int		empty_line(char *line);
 int		check_first_border(char *line);
 int		compare_start_borders(int start, t_map **map, int spot);
 int		compare_end_borders(int end, t_map **map, int spot);
-void	map_invalid(t_map **map);
+void	map_invalid(t_map **map, char *msg);
 int		space_inside_present(char *line);
 int		borders_around_space(t_map **map, int i);
 int		borders_next(char *line);
@@ -124,5 +125,7 @@ int		setting_direction_cnt(t_map **map);
 int		setting_position(t_map **map);
 int		setting_plane(t_map **map);
 char	*trim_n_cleanup(char **strings, char *path);
+int		adding_collum_size(t_map **map);
+char	*trim_map_line(char *map_line);
 
 #endif
