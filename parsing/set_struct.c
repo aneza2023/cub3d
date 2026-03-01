@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_struct.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kaligula <kaligula@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 21:35:21 by ahavrank          #+#    #+#             */
-/*   Updated: 2026/02/18 15:37:53 by anezka           ###   ########.fr       */
+/*   Updated: 2026/02/28 12:00:23 by kaligula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	set_map_struct(t_map **map)
 		perror("Malloc failed");
 		exit(1);
 	}
+	ft_memset(*map, 0, sizeof(t_map));
 	(*map)->NO_texture = NULL;
 	(*map)->SO_texture = NULL;
 	(*map)->WE_texture = NULL;

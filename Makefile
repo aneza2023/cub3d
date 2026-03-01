@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: anezka <anezka@student.42.fr>              +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/10/16 22:30:01 by anezkahavra       #+#    #+#              #
-#    Updated: 2026/02/18 16:41:50 by anezka           ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME = cub3d
 SOURCES = main.c\
 			parsing/parsing.c\
@@ -24,25 +12,33 @@ SOURCES = main.c\
 			parsing/print_struct.c\
 			parsing/for_exit.c\
 			free_stuff.c\
-			game_setup/game_crossroad.c\
-			game_setup/setting_player.c\
+			rendering/setup_game.c\
+			rendering/setting_player.c\
+			rendering/render_ray.c\
+			rendering/run_game.c\
+			rendering/movement.c\
+			rendering/dda_calc.c\
+			rendering/draw_wall.c
 
 LIBFTLIB = libft/libft.a
-MLX42LIB = MLX42/build/libmlx42.a
-
 
 OBJS = $(SOURCES:.c=.o)
 CC = cc
 CFLAGS =  -Wall -Werror -Wextra -g 
-MLXFLAGS = -Iinclude -ldl -lglfw -pthread -lm
 
-all:$(NAME)
+MLX_DIR = minilibx-linux
+MLXLIB = $(MLX_DIR)/libmlx.a
+MLXFLAGS = -lXext -lX11 -lm
 
-$(NAME):$(OBJS)
-	cc $(CFLAGS) -o $(NAME) $(OBJS) $(MLX42LIB) $(LIBFTLIB) $(MLXFLAGS)
+all: $(NAME)
+
+$(NAME): $(OBJS)
+	$(MAKE) -C $(MLX_DIR)
+	$(CC) $(CFLAGS) $(OBJS) $(MLXLIB) $(LIBFTLIB) $(MLXFLAGS) -o $(NAME)
 
 clean:
-	rm -rf $(OBJS)
+	$(MAKE) -C $(MLX_DIR) clean
+	rm -f $(OBJS)
 
 fclean: clean
 	rm -rf $(NAME)
