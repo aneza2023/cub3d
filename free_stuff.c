@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   free_stuff.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/17 15:33:47 by anezka            #+#    #+#             */
-/*   Updated: 2026/02/18 16:41:01 by anezka           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "cub3d.h"
 
 void	free_strings(char **strings, int count)
@@ -62,7 +50,7 @@ void	free_rest(t_map **map)
 	{
 		free((*map)->F_colour);
 		(*map)->F_colour = NULL;
-	}  
+	}
 	if ((*map)->C_colour != NULL)
 	{
 		free((*map)->C_colour);
@@ -71,7 +59,7 @@ void	free_rest(t_map **map)
 	if ((*map)->map != NULL)
 	{
 		i = 0;
-		while((*map)->map[i] != NULL)
+		while ((*map)->map[i] != NULL)
 		{
 			free((*map)->map[i]);
 			(*map)->map[i] = NULL;
@@ -81,8 +69,34 @@ void	free_rest(t_map **map)
 	free_pt3(map);
 }
 
+void	free_mlx(t_map *map)
+{
+	int	i;
+
+	if (!map || !map->mlx)
+		return ;
+	i = 0;
+	while (i < 4)
+	{
+		if (map->texture[i].img)
+		{
+			mlx_destroy_image(map->mlx, map->texture[i].img);
+			map->texture[i].img = NULL;
+		}
+		i++;
+	}
+	if (map->img)
+		mlx_destroy_image(map->mlx, map->img);
+	if (map->win)
+		mlx_destroy_window(map->mlx, map->win);
+	mlx_destroy_display(map->mlx);
+	free(map->mlx);
+	map->mlx = NULL;
+}
+
 void	free_map(t_map **map)
 {
+	free_mlx(*map);
 	if ((*map)->NO_texture != NULL)
 	{
 		free((*map)->NO_texture);
