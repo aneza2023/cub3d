@@ -6,7 +6,7 @@
 /*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 12:01:01 by anezka            #+#    #+#             */
-/*   Updated: 2026/02/28 00:04:51 by anezka           ###   ########.fr       */
+/*   Updated: 2026/03/01 23:09:29 by anezka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,17 +63,15 @@ void	borders_around_space_loop(t_map **map, int count, int *space_pos, int i)
 int	borders_around_space(t_map **map, int i) 
 {
 	int *space_pos;
-	// int	*space_pos_temp;
 	int	count;
 
-	if (borders_next((*map)->map[i]) == 1){
-		map_invalid(map, "Borders around space\n");
-	}
+	// if (borders_next((*map)->map[i], ) == 1){
+	// 	map_invalid(map, "Borders around space\n");
+	// }
 	space_pos = space_positions(map, i);
-	// space_pos_temp = space_pos;
 	count = (*map)->map_info->space_count;
+	borders_next_space_loop(map, count, space_pos, i);
 	borders_around_space_loop(map, count, space_pos, i);
-	// free(space_pos_temp);
 	free(space_pos);
 	return (0);
 }

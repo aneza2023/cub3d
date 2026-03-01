@@ -6,7 +6,7 @@
 /*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 16:49:14 by anezka            #+#    #+#             */
-/*   Updated: 2026/03/01 13:33:40 by anezka           ###   ########.fr       */
+/*   Updated: 2026/03/01 22:29:54 by anezka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ int	check_other_colour(char *string)
 			return (1);
 		i++;
 	}
+	// if (ft_strlen(trim_str) > 3)
+	// 	return (1);
 	free(trim_str);
 	return (0);
 
