@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/16 22:09:57 by anezkahavra       #+#    #+#             */
-/*   Updated: 2026/02/18 16:50:00 by anezka           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef CUB3D_H
 #define CUB3D_H
 
@@ -19,26 +7,38 @@
 #include <fcntl.h>
 #include <stdlib.h>
 #include "libft/libft.h"
-#include "MLX42/include/MLX42/MLX42.h"
+#include "minilibx-linux/mlx.h"
+#include <math.h>
 
+# define TEX_NO 0
+# define TEX_SO 1
+# define TEX_WE 2
+# define TEX_EA 3
+# define WINDOW_W 700
+# define WINDOW_H 500
+# define LEFT_KEY 65361
+# define RIGHT_KEY 65363
+# define ESC_KEY 65307
+# define RT_SPEED 0.01
+# define MV_SPEED 0.02
 
-# define HEIGHT 800 
-# define WIDTH 800
-
-typedef struct colours_for_map{
+typedef struct colours_for_map
+{
 	int	red;
 	int	blue;
 	int	green;
-} t_colour;
+}	t_colour;
 
-typedef struct map_informations {
+typedef struct map_informations
+{
 	int	line_count;
 	int	space_count;
 	int	map_width;
 	int	map_hight;
-} t_map_info;
+}	t_map_info;
 
-typedef struct game_player{
+typedef struct game_player
+{
 	char	direction;
 	double	pos_x;
 	double	pos_y;
@@ -46,24 +46,68 @@ typedef struct game_player{
 	double	dir_y;
 	double	plane_x;
 	double	plane_y;
-} t_player;
+}	t_player;
 
-typedef struct	game_information{
-	mlx_t	*mlx;
-	double	camera_x;
+typedef struct s_image
+{
+	void			*img;
+	char			*addr;
+	int				width;
+	int				height;
+	int				line_length;
+	int				bits_per_pixel;
+	int				endian;
+}					t_image;
+
+typedef struct s_keys
+{
+	int			w;
+	int			a;
+	int			s;
+	int			d;
+	int			left;
+	int			right;
+}					t_keys;
+
+typedef struct s_calc
+{
 	double	ray_dir_x;
 	double	ray_dir_y;
 	int		map_x;
 	int		map_y;
-	double	side_dist_x;
-	double	side_dist_y;
+	int		step_x;
+	int		step_y;
 	double	delta_dist_x;
 	double	delta_dist_y;
-	
-}	t_game_info;
+	double	side_dist_x;
+	double	side_dist_y;
+	int		side;
+	double	wall_x;
+	double	wall_dist;
+	int		text_num;
+}					t_calc;
 
+typedef struct s_wall
+{
+	int		line_height;
+	int		draw_start;
+	int		draw_end;
+	int		tex_x;
+	double	step;
+	double	tex_pos;
+	int		tex_y;
+}	t_wall;
 
-typedef struct map{
+typedef struct map
+{
+	void		*mlx;
+	void		*win;
+	void		*img;
+	char		*addr;
+	int			bpp;
+	int			line_len;
+	int			endian;
+	t_image		texture[4];
 	char		*NO_texture;
 	char		*SO_texture;
 	char		*WE_texture;
@@ -74,21 +118,20 @@ typedef struct map{
 	char		**head_map;
 	t_map_info	*map_info;
 	t_player	*player;
-	double		old_time;
-	double		time;
-	t_game_info	*game;
-} t_map;
+	t_keys		key;
+	t_calc		calc;
+}	t_map;
 
 
 
 void	free_map(t_map **map);
 void	free_pt3(t_map **map);
-void    free_borders_loop(int *space_pos, t_map **map);
+void	free_borders_loop(int *space_pos, t_map **map);
 void	free_colours(char *line, t_map **map);
-void    print_struct(t_map **map);
+void	print_struct(t_map **map);
 void	free_strings(char **strings, int count);
 char	*texture_value(char *line);
-int     parsing_elements_textures(char *line, t_map **map);
+int		parsing_elements_textures(char *line, t_map **map);
 int		parsing_elements_textures_cnt(char *line, t_map **map);
 int		parsing_elements_colours(char *line, t_map **map);
 int		parsing_elements_colours_cnt(char *line, t_map **map);
@@ -96,8 +139,8 @@ int		parse_crossroad(char *argv, t_map **map);
 int		parse_map(char *line, t_map **map);
 int		part_of_map(char *line);
 int		check_all_borders(t_map **map);
-int     part_of_map(char *line);
-int     still_border(char *line, int side);
+int		part_of_map(char *line);
+int		still_border(char *line, int side);
 int		find_border(char *line, int side);
 int		colour_values(char *line, int colour);
 int		part_of_map(char *line);
@@ -117,12 +160,21 @@ void	set_head(t_map **map);
 void	set_start_colours(t_map **map);
 void	set_player(t_map **map);
 void	set_map_struct(t_map **map);
-int		game_crossroad(t_map **map);
+int		setup_game(t_map **map);
 int		setting_player(t_map **map);
 int		setting_direction(t_map **map);
 int		setting_direction_cnt(t_map **map);
 int		setting_position(t_map **map);
 int		setting_plane(t_map **map);
+void	run_mlx(t_map *map);
+void	render(t_map *map);
+void	player_moves(t_map *map, double move_x, double move_y);
+int		process_movement(t_map *map);
+void	side_dist_init(t_map *map);
+void	perform_dda(t_map *map);
+void	wall_dist(t_map *map);
+void	draw_wall(t_map *map, int x);
+void	color_pixel(t_map *map, int x, int y, int color);
 char	*trim_n_cleanup(char **strings, char *path);
 
 #endif
