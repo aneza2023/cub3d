@@ -6,7 +6,7 @@
 #    By: anezka <anezka@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/16 22:30:01 by anezkahavra       #+#    #+#              #
-#    Updated: 2026/02/18 16:41:50 by anezka           ###   ########.fr        #
+#    Updated: 2026/03/01 23:26:32 by anezka           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SOURCES = main.c\
 			parsing/set_struct.c\
 			parsing/print_struct.c\
 			parsing/for_exit.c\
+			parsing/parse_player.c\
 			free_stuff.c\
 			game_setup/game_crossroad.c\
 			game_setup/setting_player.c\

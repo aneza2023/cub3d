@@ -6,7 +6,7 @@
 /*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 22:09:57 by anezkahavra       #+#    #+#             */
-/*   Updated: 2026/03/01 22:53:58 by anezka           ###   ########.fr       */
+/*   Updated: 2026/03/01 23:24:52 by anezka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,5 +128,6 @@ char	*trim_n_cleanup(char **strings, char *path);
 int		adding_collum_size(t_map **map);
 char	*trim_map_line(char *map_line);
 int		borders_next_space_loop(t_map **map, int count, int *space_pos, int i);
+int		check_player(t_map **map);
 
 #endif
