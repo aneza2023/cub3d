@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kaligula <kaligula@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 10:49:57 by anezkahavra       #+#    #+#             */
-/*   Updated: 2026/03/01 23:30:08 by anezka           ###   ########.fr       */
+/*   Updated: 2026/03/02 08:47:46 by kaligula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ int	check_all(t_map **map, char *line)
 	(void)line;
 	if ((*map)->NO_texture == NULL || (*map)->SO_texture == NULL 
 		|| (*map)->WE_texture == NULL || (*map)->EA_texture == NULL)
-		{
-			ft_putstr_fd("Parsing issues with textures\n", STDERR_FILENO);
-			free(line);
-			free_map(map);
-			exit (1);
-		}
+	{
+		ft_putstr_fd("Parsing issues with textures\n", STDERR_FILENO);
+		free(line);
+		free_map(map);
+		exit (1);
+	}
 	if ((*map)->C_colour->red < 0 || (*map)->F_colour->red < 0)
 	{
 		ft_putstr_fd("Parsing issues with colours\n", STDERR_FILENO);
