@@ -6,7 +6,7 @@
 /*   By: kaligula <kaligula@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 10:49:57 by anezkahavra       #+#    #+#             */
-/*   Updated: 2026/02/28 11:04:13 by kaligula         ###   ########.fr       */
+/*   Updated: 2026/03/02 08:47:46 by kaligula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,22 @@ int	check_all(t_map **map, char *line)
 	(void)line;
 	if ((*map)->NO_texture == NULL || (*map)->SO_texture == NULL 
 		|| (*map)->WE_texture == NULL || (*map)->EA_texture == NULL)
-		{
-			ft_putstr_fd("Parsing issues with textures\n", STDERR_FILENO);
-			free(line);
-			free_map(map);
-			exit (1);
-		}
+	{
+		ft_putstr_fd("Parsing issues with textures\n", STDERR_FILENO);
+		free(line);
+		free_map(map);
+		exit (1);
+	}
 	if ((*map)->C_colour->red < 0 || (*map)->F_colour->red < 0)
 	{
 		ft_putstr_fd("Parsing issues with colours\n", STDERR_FILENO);
+		free(line);
+		free_map(map);
+		exit (1);
+	}
+	if (check_player(map) == 1)
+	{
+		ft_putstr_fd("Map invalid\n", STDERR_FILENO);
 		free(line);
 		free_map(map);
 		exit (1);
@@ -105,8 +112,8 @@ int	parse_crossroad(char *argv, t_map **map)
 	}
 	check_all_borders(map);
 	check_all(map, line);
-	correct_textures(map, line);
-	// print_struct(map);
+	// correct_textures(map, line);
+	print_struct(map);
 	free(line);
 	return (0);
 }

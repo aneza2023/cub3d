@@ -1,14 +1,14 @@
 #ifndef CUB3D_H
 #define CUB3D_H
 
-#include <stdio.h>
-#include <unistd.h>
-#include <string.h>
-#include <fcntl.h>
-#include <stdlib.h>
-#include "libft/libft.h"
-#include "minilibx-linux/mlx.h"
-#include <math.h>
+# include <stdio.h>
+# include <unistd.h>
+# include <string.h>
+# include <fcntl.h>
+# include <stdlib.h>
+# include "libft/libft.h"
+# include "minilibx-linux/mlx.h"
+# include <math.h>
 
 # define TEX_NO 0
 # define TEX_SO 1
@@ -118,11 +118,12 @@ typedef struct map
 	char		**head_map;
 	t_map_info	*map_info;
 	t_player	*player;
+	double		old_time;
+	double		time;
+	int			*collum_size;
 	t_keys		key;
 	t_calc		calc;
 }	t_map;
-
-
 
 void	free_map(t_map **map);
 void	free_pt3(t_map **map);
@@ -151,7 +152,7 @@ int		empty_line(char *line);
 int		check_first_border(char *line);
 int		compare_start_borders(int start, t_map **map, int spot);
 int		compare_end_borders(int end, t_map **map, int spot);
-void	map_invalid(t_map **map);
+void	map_invalid(t_map **map, char *msg);
 int		space_inside_present(char *line);
 int		borders_around_space(t_map **map, int i);
 int		borders_next(char *line);
@@ -176,5 +177,9 @@ void	wall_dist(t_map *map);
 void	draw_wall(t_map *map, int x);
 void	color_pixel(t_map *map, int x, int y, int color);
 char	*trim_n_cleanup(char **strings, char *path);
+int		adding_collum_size(t_map **map);
+char	*trim_map_line(char *map_line);
+int		borders_next_space_loop(t_map **map, int count, int *space_pos, int i);
+int		check_player(t_map **map);
 
 #endif

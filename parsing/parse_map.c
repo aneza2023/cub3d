@@ -6,7 +6,7 @@
 /*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 16:30:11 by anezka            #+#    #+#             */
-/*   Updated: 2026/02/18 16:16:08 by anezka           ###   ########.fr       */
+/*   Updated: 2026/02/28 00:06:12 by anezka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	compare_start_borders(int start, t_map **map, int spot)
 	}
 	else if (prev_start < start)
 	{
-		border_cont = still_border((*map)->map[spot - 1], 0);;
+		border_cont = still_border((*map)->map[spot - 1], 0);
 		if (border_cont < start)
 			return (1);
 	}
@@ -93,6 +93,7 @@ int	parse_map(char *line, t_map **map)
 		ft_putstr_fd("Map is not valid\n", STDERR_FILENO);
 		free_in_parsing_map(line, map, temp_map);
 	}
+	(*map)->map[count] = trim_map_line((*map)->map[count]);
 	count++;
 	(*map)->map[count] = NULL;
 	(*map)->map_info->line_count++;
@@ -105,7 +106,7 @@ int	prepare_parse_map(char *line, t_map **map)
 
 	if (part_of_map(line) == 1 && gibberish_present(line) == 1)
 	{
-		ft_putstr_fd("Incorrect symbols found\n", STDERR_FILENO);
+		ft_putstr_fd("Incorrect symbols found in the map\n", STDERR_FILENO);
 		free(line);
 		get_next_line(-3);
 		free_map(map);
@@ -115,7 +116,7 @@ int	prepare_parse_map(char *line, t_map **map)
 	{
 		if (before_map == 1)
 		{
-			ft_putstr_fd("Empty line present inside of map\n", STDERR_FILENO);
+			ft_putstr_fd("Empty line present inside of the map\n", STDERR_FILENO);
 			free(line);
 			get_next_line(-3);
 			free_map(map);

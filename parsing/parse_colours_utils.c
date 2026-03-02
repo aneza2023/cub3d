@@ -6,7 +6,7 @@
 /*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 16:49:14 by anezka            #+#    #+#             */
-/*   Updated: 2026/02/18 17:19:04 by anezka           ###   ########.fr       */
+/*   Updated: 2026/03/01 22:29:54 by anezka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ int	check_other_colour(char *string)
 			return (1);
 		i++;
 	}
+	// if (ft_strlen(trim_str) > 3)
+	// 	return (1);
 	free(trim_str);
 	return (0);
 
@@ -73,6 +75,8 @@ int	colour_values_cnt(char **strings, int colour)
 		colour_nb = ft_atoi(strings[1]);
 	if (colour == 3)
 		colour_nb = ft_atoi(strings[2]);
+	if (colour_nb == 0 && ft_strncmp("0", strings[colour - 1], 1) != 0)
+		return (-1);
 	return (colour_nb);
 }
 

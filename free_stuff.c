@@ -32,11 +32,6 @@ void	free_pt3(t_map **map)
 		free((*map)->player);
 		(*map)->player = NULL;
 	}
-	if ((*map)->head_map != NULL)
-	{
-		free((*map)->head_map);
-		(*map)->head_map = NULL;
-	}
 	free((*map));
 	(*map) = NULL;
 }

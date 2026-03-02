@@ -6,7 +6,7 @@
 /*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 16:18:57 by anezka            #+#    #+#             */
-/*   Updated: 2026/02/18 11:13:56 by anezka           ###   ########.fr       */
+/*   Updated: 2026/02/27 10:20:12 by anezka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,15 @@ int	space_inside_present(char *line)
 	if (present == 1)
 		return(0);
 	return (1);
+}
+
+char	*trim_map_line(char *map_line)
+{
+	char *trimmed;
+
+	if (map_line == NULL)
+		return (map_line);
+	trimmed = ft_strtrim(map_line, "\n");
+	free(map_line);
+	return(trimmed);
 }

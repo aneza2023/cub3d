@@ -1,10 +1,8 @@
 
 // MLX uses fourth value for transperency, might be issue later, when colour dont look exactly as they should
 
-//free stuff
-//definatelly added player to struct without freeing, check later
-//ft_strtrim uses malloc >> needs to be freed
+//not sure if there can be empty lines after map >> check later
 
-//parsing map
-// not sure if there can be empty lines after map >> check later
-// if texture files work, check maybe later when opening them
+xpm extention check needed??
+
+if number too big issue

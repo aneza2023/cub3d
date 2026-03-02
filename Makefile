@@ -11,6 +11,7 @@ SOURCES = main.c\
 			parsing/set_struct.c\
 			parsing/print_struct.c\
 			parsing/for_exit.c\
+			parsing/parse_player.c\
 			free_stuff.c\
 			rendering/setup_game.c\
 			rendering/setting_player.c\

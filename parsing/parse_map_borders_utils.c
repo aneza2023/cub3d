@@ -6,25 +6,26 @@
 /*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 16:29:01 by anezka            #+#    #+#             */
-/*   Updated: 2026/02/18 16:37:16 by anezka           ###   ########.fr       */
+/*   Updated: 2026/03/01 23:09:33 by anezka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int	borders_next(char *line)
+int	borders_next_space_loop(t_map **map, int count, int *space_pos, int i)
 {
-	int	i;
+	int	k;
 
-	i = 0;
-	while (line[i] != '\0' && line[i] == ' ')
-		i++;
-	while (line[i] != '\0' && line[i] != ' ')
-		i++;
-	while (line[i] != '\0' && line[i] == ' ')
-		i++;
-	if (line[i] == '0')
-		return (1);
+	k = 0;
+	while (count > 0)
+	{
+		if ((*map)->map[i][space_pos[k] - 1] != '1' && (*map)->map[i][space_pos[k] - 1] != ' ')
+			free_borders_loop(space_pos, map);
+		if ((*map)->map[i][space_pos[k] + 1] != '1' && (*map)->map[i][space_pos[k] + 1] != ' ')
+			free_borders_loop(space_pos, map);
+		count--;
+		k++;
+	}
 	return (0);
 }
 
@@ -105,7 +106,7 @@ int	check_first_border(char *line)
 	i = 0;
 	while (line[i] != '\0')
 	{
-		if (line[i] == '0')
+		if (line[i] != '1' && line[i] != ' ')
 			return (1);
 		i++;
 	}
