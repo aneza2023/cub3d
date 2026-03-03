@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anezkahavrankova <anezkahavrankova@stud    +#+  +:+       +#+        */
+/*   By: ahavrank <ahavrank@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 20:10:38 by ahavrank          #+#    #+#             */
-/*   Updated: 2025/10/16 22:34:26 by anezkahavra      ###   ########.fr       */
+/*   Updated: 2026/03/03 21:08:48 by ahavrank         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdint.h>
-#include <unistd.h>
-#include "getnextline/get_next_line.h"
+# include <stdio.h>
+# include <stdlib.h>
+# include <stdint.h>
+# include <unistd.h>
+# include "getnextline/get_next_line.h"
 
 size_t	ft_strlen(const char *str);
 int		ft_atoi(const char *nptr);

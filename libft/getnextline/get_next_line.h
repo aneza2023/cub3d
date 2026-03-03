@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ahavrank <ahavrank@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 10:27:01 by codespace         #+#    #+#             */
-/*   Updated: 2025/10/17 11:59:32 by anezka           ###   ########.fr       */
+/*   Updated: 2026/03/03 20:57:50 by ahavrank         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 
 char	*ft_strdup_gnl(const char *s1);
 char	*ft_strchrmod(const char *s, int c);
-size_t	ft_strlen_gnl(const char *str);
+size_t	gnlen(const char *str);
 char	*ft_strjoin_gnl(char *s1, char *s2);
 char	*end_of_line(char *buff);
 char	*get_next_line(int fd);

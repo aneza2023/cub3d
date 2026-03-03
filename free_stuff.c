@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   free_stuff.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahavrank <ahavrank@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/03 21:07:29 by ahavrank          #+#    #+#             */
+/*   Updated: 2026/03/03 21:07:36 by ahavrank         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 void	free_strings(char **strings, int count)
@@ -41,15 +53,15 @@ void	free_rest(t_map **map)
 	int	i;
 
 	i = 0;
-	if ((*map)->F_colour != NULL)
+	if ((*map)->f_colour != NULL)
 	{
-		free((*map)->F_colour);
-		(*map)->F_colour = NULL;
+		free((*map)->f_colour);
+		(*map)->f_colour = NULL;
 	}
-	if ((*map)->C_colour != NULL)
+	if ((*map)->c_colour != NULL)
 	{
-		free((*map)->C_colour);
-		(*map)->C_colour = NULL;
+		free((*map)->c_colour);
+		(*map)->c_colour = NULL;
 	}
 	if ((*map)->map != NULL)
 	{
@@ -92,25 +104,25 @@ void	free_mlx(t_map *map)
 void	free_map(t_map **map)
 {
 	free_mlx(*map);
-	if ((*map)->NO_texture != NULL)
+	if ((*map)->no_texture != NULL)
 	{
-		free((*map)->NO_texture);
-		(*map)->NO_texture = NULL;
+		free((*map)->no_texture);
+		(*map)->no_texture = NULL;
 	}
-	if ((*map)->SO_texture != NULL)
+	if ((*map)->so_texture != NULL)
 	{
-		free((*map)->SO_texture);
-		(*map)->SO_texture = NULL;
+		free((*map)->so_texture);
+		(*map)->so_texture = NULL;
 	}
-	if ((*map)->WE_texture != NULL)
+	if ((*map)->we_texture != NULL)
 	{
-		free((*map)->WE_texture);
-		(*map)->WE_texture = NULL;
+		free((*map)->we_texture);
+		(*map)->we_texture = NULL;
 	}
-	if ((*map)->EA_texture != NULL)
+	if ((*map)->ea_texture != NULL)
 	{
-		free((*map)->EA_texture);
-		(*map)->EA_texture = NULL;
+		free((*map)->ea_texture);
+		(*map)->ea_texture = NULL;
 	}
 	free_rest(map);
 }

@@ -17,10 +17,10 @@ void	ceiling_floor(t_map *map)
 	int	color_f;
 	int	color_c;
 
-	color_f = ((map->F_colour->red << 16)
-			| (map->F_colour->green << 8) | map->F_colour->blue);
-	color_c = ((map->C_colour->red << 16)
-			| (map->C_colour->green << 8) | map->C_colour->blue);
+	color_f = ((map->f_colour->red << 16)
+			| (map->f_colour->green << 8) | map->f_colour->blue);
+	color_c = ((map->c_colour->red << 16)
+			| (map->c_colour->green << 8) | map->c_colour->blue);
 	y = 0;
 	while (y < WINDOW_H)
 	{

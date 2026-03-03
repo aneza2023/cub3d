@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map_borders.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ahavrank <ahavrank@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 12:01:01 by anezka            #+#    #+#             */
-/*   Updated: 2026/03/01 23:09:29 by anezka           ###   ########.fr       */
+/*   Updated: 2026/03/03 21:37:16 by ahavrank         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	still_border(char *line, int side)
 		while (i >= 0)
 		{
 			if (line[i] != '1' && line[i] != ' ')
-				break;
+				break ;
 			i--;
 		}
 		return (i + 1);
@@ -44,30 +44,30 @@ void	borders_around_space_loop(t_map **map, int count, int *space_pos, int i)
 	k = 0;
 	while (count > 0)
 	{
-		if (i == 0 && ((*map)->map[i + 1][space_pos[k]] != '1' && (*map)->map[i + 1][space_pos[k]] != ' ' 
+		if (i == 0 && ((*map)->map[i + 1][space_pos[k]] != '1'
+			&& (*map)->map[i + 1][space_pos[k]] != ' '
 			&& (*map)->map[i + 1][space_pos[k]] != '\0'))
 			free_borders_loop(space_pos, map);
 		else if (i != 0 && (*map)->map[i + 1] != NULL)
 		{
-			if (((*map)->map[i - 1][space_pos[k]] != '1' && (*map)->map[i - 1][space_pos[k]] != ' ' && (*map)->map[i - 1][space_pos[k]] != '\0') 
-				|| ((*map)->map[i + 1][space_pos[k]] != '1' && (*map)->map[i + 1][space_pos[k]] != ' ' && (*map)->map[i + 1][space_pos[k]] != '\0'))
+			if (free_borders_loop_cnt(map, k, space_pos, i) == 1)
 				free_borders_loop(space_pos, map);
 		}
-		else if ((*map)->map[i + 1] == NULL && ((*map)->map[i - 1][space_pos[k]] != '1' && (*map)->map[i - 1][space_pos[k]] != ' ' && (*map)->map[i - 1][space_pos[k]] != '\0'))
+		else if ((*map)->map[i + 1] == NULL
+			&& ((*map)->map[i - 1][space_pos[k]] != '1'
+			&& (*map)->map[i - 1][space_pos[k]] != ' '
+			&& (*map)->map[i - 1][space_pos[k]] != '\0'))
 			free_borders_loop(space_pos, map);
 		count--;
 		k++;
 	}
 }
 
-int	borders_around_space(t_map **map, int i) 
+int	borders_around_space(t_map **map, int i)
 {
-	int *space_pos;
+	int	*space_pos;
 	int	count;
 
-	// if (borders_next((*map)->map[i], ) == 1){
-	// 	map_invalid(map, "Borders around space\n");
-	// }
 	space_pos = space_positions(map, i);
 	count = (*map)->map_info->space_count;
 	borders_next_space_loop(map, count, space_pos, i);
@@ -88,18 +88,18 @@ int	find_border(char *line, int side)
 			i++;
 		if (line[i] != '\0' && line[i] != '1')
 			return (-1);
-		return(i);
+		return (i);
 	}
 	else if (side == 1)
 	{
 		lenght = ft_strlen(line) - 1;
-		if(line[lenght] == '\n')
+		if (line[lenght] == '\n')
 			lenght--;
 		while (line[lenght] == ' ')
 			lenght--;
 		if (line[lenght] != '1')
 			return (-1);
-		return(lenght);
+		return (lenght);
 	}
 	return (-1);
 }
@@ -130,3 +130,4 @@ int	check_all_borders(t_map **map)
 	}
 	return (0);
 }
+//error msg ok, only used for testing

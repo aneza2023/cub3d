@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ahavrank <ahavrank@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 11:33:13 by codespace         #+#    #+#             */
-/*   Updated: 2026/02/17 15:07:36 by anezka           ###   ########.fr       */
+/*   Updated: 2026/03/03 20:57:51 by ahavrank         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strjoin_gnl(char *s1, char *s2)
 
 	if (!s2)
 		s2 = ft_strdup_gnl("");
-	temp = (char *)malloc((ft_strlen_gnl(s1) + ft_strlen_gnl(s2) + 1) * sizeof(char));
+	temp = (char *)malloc((gnlen(s1) + gnlen(s2) + 1) * sizeof(char));
 	if (temp == NULL)
 		return (NULL);
 	i = 0;
@@ -41,7 +41,7 @@ char	*ft_strjoin_gnl(char *s1, char *s2)
 	return (free(s2), temp);
 }
 
-size_t	ft_strlen_gnl(const char *str)
+size_t	gnlen(const char *str)
 {
 	int	i;
 
@@ -79,11 +79,11 @@ char	*ft_strdup_gnl(const char *s1)
 	char				*temp;
 	unsigned int		i;
 
-	temp = malloc((ft_strlen_gnl(s1) + 1) * sizeof(char));
+	temp = malloc((gnlen(s1) + 1) * sizeof(char));
 	if (temp == NULL)
 		return (NULL);
 	i = 0;
-	while (i < ft_strlen_gnl(s1))
+	while (i < gnlen(s1))
 	{
 		temp[i] = s1[i];
 		i++;
@@ -119,15 +119,17 @@ char	*end_of_line(char *buff)
 	i = 0;
 	while (buff[i] != '\0' && buff[i] != '\n')
 		i++;
-	if  (buff[i] == '\n')
+	if (buff[i] == '\n')
 		i++;
 	buffer = malloc(i + 1);
 	i = 0;
-	while (buff[i] != '\0' && buff[i] != '\n'){
+	while (buff[i] != '\0' && buff[i] != '\n')
+	{
 		buffer[i] = buff[i];
 		i++;
 	}
-	if (buff[i] == '\n'){
+	if (buff[i] == '\n')
+	{
 		buffer[i] = '\n';
 		i++;
 	}
@@ -135,5 +137,3 @@ char	*end_of_line(char *buff)
 	buffer[i] = '\0';
 	return (buffer);
 }
-
-

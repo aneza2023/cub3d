@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahavrank <ahavrank@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/03 21:07:45 by ahavrank          #+#    #+#             */
+/*   Updated: 2026/03/03 21:25:34 by ahavrank         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 int	main(int argc, char *argv[])
@@ -7,8 +19,7 @@ int	main(int argc, char *argv[])
 	map = NULL;
 	if (argc != 2)
 	{
-		ft_putstr_fd("Program accepts only single argument in *.cub format\n",
-			STDERR_FILENO);
+		ft_putstr_fd("Error\nOne *.cub file needed\n", STDERR_FILENO);
 		return (1);
 	}
 	else

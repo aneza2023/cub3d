@@ -20,7 +20,8 @@ int	help(char **buff, int bytestread, char **remainder, char **text)
 	if (ft_strchrmod(*text, '\n') != NULL)
 	{
 		*remainder = ft_strdup_gnl(ft_strchrmod(*text, '\n'));
-		if ((*remainder)[0] == '\0'){
+		if ((*remainder)[0] == '\0')
+		{
 			free(*remainder);
 			*remainder = NULL;
 		}
@@ -32,8 +33,6 @@ int	help(char **buff, int bytestread, char **remainder, char **text)
 		*remainder = NULL;
 		return (0);
 	}
-/* 	else if (ft_strchrmod(*text, '\n') == NULL && bytestread > 0)
-		return (0); */
 	return (1);
 }
 
@@ -43,7 +42,8 @@ int	help02(char **buff, int fd)
 
 	*buff = (char *)malloc(BUFFER_SIZE + 1 * sizeof(char));
 	bytestread = read(fd, *buff, BUFFER_SIZE);
-	if (bytestread <= 0){
+	if (bytestread <= 0)
+	{
 		free (*buff);
 		*buff = NULL;
 	}
@@ -61,7 +61,6 @@ int	updated_check(char *remainder, int fd)
 {
 	if (fd == -3)
 	{
-		// printf("remainder: %s", remainder);
 		free(remainder);
 		return (1);
 	}
@@ -73,24 +72,24 @@ char	*get_next_line(int fd)
 	char		*buff;
 	char		*text;
 	int			bytestread;
-	static char	*remainder;
+	static char	*r;
 
-	if (updated_check(remainder, fd) == 1 || fd < 0 || BUFFER_SIZE <= 0 || fd > 100)
+	if (updated_check(r, fd) == 1 || fd < 0 || BUFFER_SIZE <= 0 || fd > 100)
 		return (NULL);
 	bytestread = help02(&buff, fd);
-	if (bytestread == 0 && remainder == NULL)
+	if (bytestread == 0 && r == NULL)
 		free(buff);
-	if ( bytestread < 0 || (bytestread == 0 && remainder == NULL))
+	if (bytestread < 0 || (bytestread == 0 && r == NULL))
 		return (NULL);
 	text = ft_strdup_gnl("");
-	if (remainder != NULL)
+	if (r != NULL)
 	{
 		free(text);
-		text = remainder;
+		text = r;
 	}
-	while (bytestread > 0 || remainder != NULL)
+	while (bytestread > 0 || r != NULL)
 	{
-		if (help(&buff, bytestread, &remainder, &text) == 0)
+		if (help(&buff, bytestread, &r, &text) == 0)
 			break ;
 		bytestread = help02(&buff, fd);
 	}

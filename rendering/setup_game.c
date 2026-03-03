@@ -43,13 +43,13 @@ static int	load_texture(t_map *map, int i, char *path)
 
 int	setting_textures(t_map *map)
 {
-	if (load_texture(map, 0, map->NO_texture))
+	if (load_texture(map, 0, map->no_texture))
 		return (1);
-	if (load_texture(map, 1, map->SO_texture))
+	if (load_texture(map, 1, map->so_texture))
 		return (1);
-	if (load_texture(map, 2, map->WE_texture))
+	if (load_texture(map, 2, map->we_texture))
 		return (1);
-	if (load_texture(map, 3, map->EA_texture))
+	if (load_texture(map, 3, map->ea_texture))
 		return (1);
 	return (0);
 }

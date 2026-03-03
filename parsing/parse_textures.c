@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_textures.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ahavrank <ahavrank@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 16:49:25 by anezka            #+#    #+#             */
-/*   Updated: 2026/03/01 13:19:01 by anezka           ###   ########.fr       */
+/*   Updated: 2026/03/03 21:31:42 by ahavrank         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ char	*trim_n_cleanup(char **strings, char *path)
 		return (path);
 	trimpath = ft_strtrim(path, "\n");
 	free(path);
-	return(trimpath);
+	return (trimpath);
 }
 
-char *texture_value(char *line)
+char	*texture_value(char *line)
 {
 	int		count;
 	int		i;
@@ -39,7 +39,7 @@ char *texture_value(char *line)
 		path = ft_strdup(strings[1]);
 	if (count != 2)
 	{
-		ft_putstr_fd("Texture values are invalid\n", STDERR_FILENO);
+		ft_putstr_fd("Error\nTextures\n", STDERR_FILENO);
 		free(path);
 		path = NULL;
 	}
@@ -57,8 +57,8 @@ int	parsing_elements_textures_cnt(char *line, t_map **map)
 {
 	if (ft_strncmp(line, "WE ", 3) == 0)
 	{
-		(*map)->WE_texture = texture_value(line);
-		if ((*map)->WE_texture == NULL)
+		(*map)->we_texture = texture_value(line);
+		if ((*map)->we_texture == NULL)
 		{
 			free(line);
 			get_next_line(-3);
@@ -68,8 +68,8 @@ int	parsing_elements_textures_cnt(char *line, t_map **map)
 	}
 	else if (ft_strncmp(line, "EA ", 3) == 0)
 	{
-		(*map)->EA_texture = texture_value(line);
-		if ((*map)->EA_texture == NULL)
+		(*map)->ea_texture = texture_value(line);
+		if ((*map)->ea_texture == NULL)
 		{
 			free(line);
 			get_next_line(-3);
@@ -86,8 +86,8 @@ int	parsing_elements_textures(char *line, t_map **map)
 {
 	if (ft_strncmp(line, "NO ", 3) == 0)
 	{
-		(*map)->NO_texture = texture_value(line);
-		if ((*map)->NO_texture == NULL)
+		(*map)->no_texture = texture_value(line);
+		if ((*map)->no_texture == NULL)
 		{
 			free(line);
 			get_next_line(-3);
@@ -97,8 +97,8 @@ int	parsing_elements_textures(char *line, t_map **map)
 	}
 	else if (ft_strncmp(line, "SO ", 3) == 0)
 	{
-		(*map)->SO_texture = texture_value(line);
-		if ((*map)->SO_texture == NULL)
+		(*map)->so_texture = texture_value(line);
+		if ((*map)->so_texture == NULL)
 		{
 			free(line);
 			get_next_line(-3);

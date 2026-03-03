@@ -1,6 +1,7 @@
 NAME = cub3d
 SOURCES = main.c\
 			parsing/parsing.c\
+			parsing/parsing_utils.c\
 			parsing/parse_map.c\
 			parsing/parse_map_utils.c\
 			parsing/parse_map_borders.c\

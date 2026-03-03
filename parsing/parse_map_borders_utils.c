@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map_borders_utils.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ahavrank <ahavrank@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 16:29:01 by anezka            #+#    #+#             */
-/*   Updated: 2026/03/01 23:09:33 by anezka           ###   ########.fr       */
+/*   Updated: 2026/03/03 21:34:51 by ahavrank         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,11 @@ int	borders_next_space_loop(t_map **map, int count, int *space_pos, int i)
 	k = 0;
 	while (count > 0)
 	{
-		if ((*map)->map[i][space_pos[k] - 1] != '1' && (*map)->map[i][space_pos[k] - 1] != ' ')
+		if ((*map)->map[i][space_pos[k] - 1] != '1'
+			&& (*map)->map[i][space_pos[k] - 1] != ' ')
 			free_borders_loop(space_pos, map);
-		if ((*map)->map[i][space_pos[k] + 1] != '1' && (*map)->map[i][space_pos[k] + 1] != ' ')
+		if ((*map)->map[i][space_pos[k] + 1] != '1'
+			&& (*map)->map[i][space_pos[k] + 1] != ' ')
 			free_borders_loop(space_pos, map);
 		count--;
 		k++;
@@ -44,7 +46,7 @@ int	count_spaces(t_map **map, int i)
 			count++;
 		j++;
 	}
-	while (i > 0 && ((*map)->map[i][j] != '1' && (*map)->map[i][j] != '0')) 
+	while (i > 0 && ((*map)->map[i][j] != '1' && (*map)->map[i][j] != '0'))
 	{
 		if ((*map)->map[i][j] == ' ')
 			count--;
@@ -83,13 +85,13 @@ int	*space_positions(t_map **map, int i)
 	positions = malloc(sizeof(int) * count);
 	if (positions == NULL)
 	{
-		perror("Malloc failed");
+		perror("Error\n");
 		free_map(map);
 		exit (1);
 	}
 	last = 0;
 	j = 0;
-	while(count > 0)
+	while (count > 0)
 	{
 		positions[j] = add_position((*map)->map[i], ' ', last);
 		last = positions[j];

@@ -1,5 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahavrank <ahavrank@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/03 21:00:01 by ahavrank          #+#    #+#             */
+/*   Updated: 2026/03/03 21:19:44 by ahavrank         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUB3D_H
-#define CUB3D_H
+# define CUB3D_H
 
 # include <stdio.h>
 # include <unistd.h>
@@ -108,12 +120,12 @@ typedef struct map
 	int			line_len;
 	int			endian;
 	t_image		texture[4];
-	char		*NO_texture;
-	char		*SO_texture;
-	char		*WE_texture;
-	char		*EA_texture;
-	t_colour	*F_colour;
-	t_colour	*C_colour;
+	char		*no_texture;
+	char		*so_texture;
+	char		*we_texture;
+	char		*ea_texture;
+	t_colour	*f_colour;
+	t_colour	*c_colour;
 	char		**map;
 	char		**head_map;
 	t_map_info	*map_info;
@@ -181,5 +193,7 @@ int		adding_collum_size(t_map **map);
 char	*trim_map_line(char *map_line);
 int		borders_next_space_loop(t_map **map, int count, int *space_pos, int i);
 int		check_player(t_map **map);
+int		find_texture_colours(char *line);
+int		free_borders_loop_cnt(t_map **map, int k, int *space_pos, int i);
 
 #endif

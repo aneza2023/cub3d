@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anezka <anezka@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ahavrank <ahavrank@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 15:58:07 by anezkahavra       #+#    #+#             */
-/*   Updated: 2026/03/01 13:15:38 by anezka           ###   ########.fr       */
+/*   Updated: 2026/03/03 21:08:21 by ahavrank         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,3 @@ char	*ft_strtrim(char const *s1, char const *set)
 // 	printf("%s\n", ft_strtrim(str, "l"));
 //     return (0);
 // }
-
