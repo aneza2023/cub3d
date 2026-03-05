@@ -11,6 +11,7 @@ The goal was to make a dynamic view inside a maze.
 ### Instructions
 Compilation & execution
 
+- git clone https://github.com/42paris/minilibx-linux.git
 - make, make re
 
 - ./cub3d [path_to_map.cub]
