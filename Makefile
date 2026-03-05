@@ -1,4 +1,4 @@
-NAME = cub3d
+NAME = cub3D
 SOURCES = main.c\
 			parsing/parsing.c\
 			parsing/parsing_utils.c\
